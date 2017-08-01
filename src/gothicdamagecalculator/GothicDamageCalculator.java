@@ -9,9 +9,13 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 
+import javax.swing.border.LineBorder;
+import javax.swing.border.TitledBorder;
 import javax.swing.ButtonGroup;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
 
 /**
  *
@@ -24,6 +28,9 @@ public class GothicDamageCalculator {
 	
 	JRadioButton rbG1;
 	JRadioButton rbG2;
+	
+	LineBorder lBorder;
+	TitledBorder tBorder;
 	
 	JPanel pGrid;
 	JPanel pRadioButton;
@@ -61,16 +68,81 @@ public class GothicDamageCalculator {
 		pResult = new JPanel();
 		
 		pGrid.setLayout(new GridLayout(2, 2, 20, 20));	// rows, cols, hgap, vgap
-		pGrid.add(pNameless);
-		pGrid.add(pTarget);
-		pGrid.add(pWeapon);
-		pGrid.add(pResult);
+								// row, col
+		pGrid.add(pNameless);	//   0, 0
+		pGrid.add(pTarget);		//   0, 1
+		pGrid.add(pWeapon);		//   1, 0
+		pGrid.add(pResult);		//   1, 1
 		
+		
+		
+		border(pNameless, "Nameless Hero");
+		border(pTarget, "Target");
+		border(pWeapon, "Weapon");
+		border(pResult, "Result");
+		
+		
+		
+		
+		
+		
+		
+		namelessWidgets();
+		targetWidgets();
+		weaponWidgets();
+		resultWidgets();
 		
 		/*
 		COLOR CODING
 		*/
 		colorCoding();
+	}
+	
+	private void border(JPanel jp, String str) {
+		lBorder = new LineBorder(Colors.RED, 5);	// thickness
+		tBorder = new TitledBorder(lBorder, str, TitledBorder.LEFT, TitledBorder.TOP);
+		jp.setBorder(tBorder);
+	}
+	
+	
+	private void namelessWidgets() {
+		pNameless.setLayout(new GridLayout(2, 2, 50, 50));
+		
+		JSpinner jsStrength = new JSpinner(new SpinnerNumberModel(10, 0, 5000, 1));
+		JSpinner jsDexterity = new JSpinner(new SpinnerNumberModel(10, 0, 5000, 1));
+		JSpinner js1HSkill = new JSpinner(new SpinnerNumberModel(10, 0, 100, 1));
+		JSpinner js2HSkill = new JSpinner(new SpinnerNumberModel(10, 0, 100, 1));
+		
+		/*
+		in the listener that will handle getting the value from spinner:
+		try----js1HSkill.commitEdit();
+		error---- red color all over the place
+		*/
+		
+		
+		/*
+		adding spinner title/description -> use different layout ??
+		*/
+		
+		pNameless.add(jsStrength);
+		pNameless.add(js1HSkill);
+		pNameless.add(jsDexterity);
+		pNameless.add(js2HSkill);
+		
+		
+		
+	}
+	
+	private void targetWidgets() {
+		
+	}
+	
+	private void weaponWidgets() {
+		
+	}
+	
+	private void resultWidgets() {
+		
 	}
 	
 	/**
