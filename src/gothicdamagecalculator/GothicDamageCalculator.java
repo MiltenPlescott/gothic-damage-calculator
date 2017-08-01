@@ -5,7 +5,7 @@
  */
 package gothicdamagecalculator;
 
-import java.awt.Panel;
+import javax.swing.JPanel;
 
 /**
  *
@@ -13,17 +13,19 @@ import java.awt.Panel;
  */
 public class GothicDamageCalculator {
 	MyFrame frame;
-	Panel pNameless;
-	Panel pWeapon;
-	Panel pTarget;
+	JPanel jpNameless;
+	JPanel jpWeapon;
+	JPanel jpTarget;
+	JPanel jpResult;
 	
 	GothicDamageCalculator() {
 		frame = new MyFrame("Gothic Damage Calculator");
 		//frame.setLayout(TBD);
 		frame.addWindowListener(new CloseWindow());
-		pNameless = new Panel();
-		pWeapon = new Panel();
-		pTarget = new Panel();
+		jpNameless = new JPanel();
+		jpWeapon = new JPanel();
+		jpTarget = new JPanel();
+		jpResult = new JPanel();
 	}
 	
 	/**

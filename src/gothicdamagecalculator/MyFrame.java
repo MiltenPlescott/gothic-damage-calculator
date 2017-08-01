@@ -5,16 +5,20 @@
  */
 package gothicdamagecalculator;
 
-import java.awt.Frame;
+import javax.swing.JFrame;
 
 /**
  *
  * @author Milten Plescott
  */
-public class MyFrame extends Frame {
+public class MyFrame extends JFrame {
 	
 	MyFrame(String name) {
 		super(name);
+		gui();
+	}
+	
+	private void gui() {
 		this.setVisible(true);
 		// TODO: dynamic resizing here
 		this.setSize(500, 500);
