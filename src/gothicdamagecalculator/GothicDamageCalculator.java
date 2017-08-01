@@ -6,16 +6,21 @@
 package gothicdamagecalculator;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
+import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
+import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
 
 /**
  *
@@ -101,40 +106,123 @@ public class GothicDamageCalculator {
 	private void border(JPanel jp, String str) {
 		lBorder = new LineBorder(Colors.RED, 5);	// thickness
 		tBorder = new TitledBorder(lBorder, str, TitledBorder.LEFT, TitledBorder.TOP);
-		jp.setBorder(tBorder);
+		//jp.setBorder(tBorder);
+		
+		
+		jp.setBorder(new CompoundBorder(tBorder, new EmptyBorder(20, 20, 20, 20)));	// change dynamically
 	}
 	
-	
 	private void namelessWidgets() {
-		pNameless.setLayout(new GridLayout(2, 2, 50, 50));
-		
-		JSpinner jsStrength = new JSpinner(new SpinnerNumberModel(10, 0, 5000, 1));
-		JSpinner jsDexterity = new JSpinner(new SpinnerNumberModel(10, 0, 5000, 1));
-		JSpinner js1HSkill = new JSpinner(new SpinnerNumberModel(10, 0, 100, 1));
-		JSpinner js2HSkill = new JSpinner(new SpinnerNumberModel(10, 0, 100, 1));
-		
 		/*
 		in the listener that will handle getting the value from spinner:
 		try----js1HSkill.commitEdit();
 		error---- red color all over the place
 		*/
 		
-		
+		// FlowLayout - does not look very good
 		/*
-		adding spinner title/description -> use different layout ??
+		JPanel pStr = new JPanel(new FlowLayout(FlowLayout.RIGHT, 10, 10));	// align, hgap, vgap
+		JPanel pDex = new JPanel(new FlowLayout(FlowLayout.RIGHT, 10, 10));
+		JPanel p1HSkill = new JPanel(new FlowLayout(FlowLayout.TRAILING, 10, 10));
+		JPanel p2HSkill = new JPanel(new FlowLayout(FlowLayout.TRAILING, 10, 10));
 		*/
 		
-		pNameless.add(jsStrength);
-		pNameless.add(js1HSkill);
-		pNameless.add(jsDexterity);
-		pNameless.add(js2HSkill);
+		
+		// BorderLayout - still kinda bad
+		/*
+		JPanel pStr = new JPanel(new BorderLayout(10, 10));
+		JPanel pDex = new JPanel(new BorderLayout(10, 10));
+		JPanel p1HSkill = new JPanel(new BorderLayout(10, 10));
+		JPanel p2HSkill = new JPanel(new BorderLayout(10, 10));
+		*/
+		
+		// BoxLayout - 
+		JPanel pStr = new JPanel();
+		JPanel pDex = new JPanel();
+		JPanel p1HSkill = new JPanel();
+		JPanel p2HSkill = new JPanel();
+		
+		pStr.setLayout(new BoxLayout(pStr, BoxLayout.X_AXIS));
+		pDex.setLayout(new BoxLayout(pDex, BoxLayout.X_AXIS));
+		p1HSkill.setLayout(new BoxLayout(p1HSkill, BoxLayout.X_AXIS));
+		p2HSkill.setLayout(new BoxLayout(p2HSkill, BoxLayout.X_AXIS));
 		
 		
+		
+		JTextField jtfStr = foo("Strength", frame.getBackground());
+		JTextField jtfDex = foo("Dexterity", frame.getBackground());
+		JTextField jtf1HSkill = foo("1H Skill", frame.getBackground());
+		JTextField jtf2HSkill = foo("2H Skill", frame.getBackground());
+		
+		JSpinner jsStrength = new JSpinner(new SpinnerNumberModel(10, 0, 5000, 1));
+		JSpinner jsDexterity = new JSpinner(new SpinnerNumberModel(10, 0, 5000, 1));
+		JSpinner js1HSkill = new JSpinner(new SpinnerNumberModel(10, 0, 100, 1));
+		JSpinner js2HSkill = new JSpinner(new SpinnerNumberModel(10, 0, 100, 1));
+		
+		pStr.add(jtfStr);
+		pStr.add(jsStrength);
+		
+		pDex.add(jtfDex);
+		pDex.add(jsDexterity);
+		
+		p1HSkill.add(jtf1HSkill);
+		p1HSkill.add(js1HSkill);
+		
+		p2HSkill.add(jtf2HSkill);
+		p2HSkill.add(js2HSkill);
+		
+		
+		
+		
+		pNameless.setLayout(new GridLayout(2, 2, 50, 50));
+		pNameless.add(pStr);
+		pNameless.add(p1HSkill);
+		pNameless.add(pDex);
+		pNameless.add(p2HSkill);
 		
 	}
 	
 	private void targetWidgets() {
+		JPanel pHealth = new JPanel();
+		JPanel pHits = new JPanel();
+		JPanel pMelee = new JPanel();
+		JPanel pRanged = new JPanel();
 		
+		pHealth.setLayout(new BoxLayout(pHealth, BoxLayout.X_AXIS));
+		pHits.setLayout(new BoxLayout(pHits, BoxLayout.X_AXIS));
+		pMelee.setLayout(new BoxLayout(pMelee, BoxLayout.X_AXIS));
+		pRanged.setLayout(new BoxLayout(pRanged, BoxLayout.X_AXIS));
+		
+		JTextField jtfHealth = foo("Health", frame.getBackground());
+		JTextField jtfHits = foo("Number of hits", frame.getBackground());
+		JTextField jtfMelee = foo("Melee armor", frame.getBackground());
+		JTextField jtfRanged = foo("Ranged armor", frame.getBackground());
+		
+		JSpinner jsHealth = new JSpinner(new SpinnerNumberModel(1000, 1, 10000000, 1));
+		JSpinner jsHits = new JSpinner(new SpinnerNumberModel(20, 1, 5000, 1));
+		JSpinner jsMelee = new JSpinner(new SpinnerNumberModel(10, 0, 5000, 1));
+		JSpinner jsRanged = new JSpinner(new SpinnerNumberModel(10, 0, 5000, 1));
+		
+		
+		pHealth.add(jtfHealth);
+		pHealth.add(jsHealth);
+		
+		pHits.add(jtfHits);
+		pHits.add(jsHits);
+		
+		pMelee.add(jtfMelee);
+		pMelee.add(jsMelee);
+		
+		pRanged.add(jtfRanged);
+		pRanged.add(jsRanged);
+		
+		
+		
+		pTarget.setLayout(new GridLayout(2, 2, 50, 50));
+		pTarget.add(pHealth);
+		pTarget.add(pMelee);
+		pTarget.add(pHits);
+		pTarget.add(pRanged);
 	}
 	
 	private void weaponWidgets() {
@@ -143,6 +231,12 @@ public class GothicDamageCalculator {
 	
 	private void resultWidgets() {
 		
+	}
+	
+	private JTextField foo(String str, Color color) {
+		JTextField jtf = new JTextField(str);
+		jtf.setBackground(Color.red);
+		return jtf;
 	}
 	
 	/**
