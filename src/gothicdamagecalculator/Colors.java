@@ -14,6 +14,20 @@ import java.awt.Color;
 public final class Colors {
 	public static final Color GRAY = new Color(240, 240, 240);
 	
+	/*
+	COLORS FOR COLOR CODING
+	*/
+	
+	public static final Color RED = new Color(255, 0, 0);
+	public static final Color ORANGE = new Color(255, 127, 0);
+	public static final Color YELLOW = new Color(255, 255, 0);
+	public static final Color GREEN = new Color(0, 255, 0);
+	public static final Color BLUE = new Color(0, 0, 255);
+	public static final Color PURPLE = new Color(131, 0, 247);
+	public static final Color BROWN = new Color(94, 0, 0);
+	public static final Color PINK = new Color(255, 188, 247);
+	public static final Color CYAN = new Color(0, 255, 255);
+	
 	
 	private Colors() {
 		throw new AssertionError();
