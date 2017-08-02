@@ -18,6 +18,7 @@ public final class Colors {
 	COLORS FOR COLOR CODING
 	*/
 	
+	public static final Color WHITE = new Color(255, 255, 255);
 	public static final Color RED = new Color(255, 0, 0);
 	public static final Color ORANGE = new Color(255, 127, 0);
 	public static final Color YELLOW = new Color(255, 255, 0);

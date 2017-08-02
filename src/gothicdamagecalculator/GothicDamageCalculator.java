@@ -108,8 +108,9 @@ public class GothicDamageCalculator {
 	}
 	
 	private void border(JPanel jp, String str) {
-		lBorder = new LineBorder(Colors.RED, 5);	// thickness
+		lBorder = new LineBorder(Colors.BLUE, 5);	// thickness
 		tBorder = new TitledBorder(lBorder, str, TitledBorder.LEFT, TitledBorder.TOP);
+		tBorder.setTitleColor(Colors.WHITE);
 		//jp.setBorder(tBorder);
 		
 		
@@ -153,26 +154,26 @@ public class GothicDamageCalculator {
 		
 		
 		
-		JTextField jtfStr = setJTF("Strength", frame.getBackground());
-		JTextField jtfDex = setJTF("Dexterity", frame.getBackground());
-		JTextField jtf1HSkill = setJTF("1H Skill", frame.getBackground());
-		JTextField jtf2HSkill = setJTF("2H Skill", frame.getBackground());
+		JLabel jlStr = setJL("Strength");
+		JLabel jlDex = setJL("Dexterity");
+		JLabel jl1HSkill = setJL("1H Skill");
+		JLabel jl2HSkill = setJL("2H Skill");
 		
 		JSpinner jsStrength = new JSpinner(new SpinnerNumberModel(10, 0, 5000, 1));
 		JSpinner jsDexterity = new JSpinner(new SpinnerNumberModel(10, 0, 5000, 1));
 		JSpinner js1HSkill = new JSpinner(new SpinnerNumberModel(10, 0, 100, 1));
 		JSpinner js2HSkill = new JSpinner(new SpinnerNumberModel(10, 0, 100, 1));
 		
-		pStr.add(jtfStr);
+		pStr.add(jlStr);
 		pStr.add(jsStrength);
 		
-		pDex.add(jtfDex);
+		pDex.add(jlDex);
 		pDex.add(jsDexterity);
 		
-		p1HSkill.add(jtf1HSkill);
+		p1HSkill.add(jl1HSkill);
 		p1HSkill.add(js1HSkill);
 		
-		p2HSkill.add(jtf2HSkill);
+		p2HSkill.add(jl2HSkill);
 		p2HSkill.add(js2HSkill);
 		
 		
@@ -199,10 +200,10 @@ public class GothicDamageCalculator {
 		
 		
 		// use panel instead of frame to get color ??? in case if frame color != panel color
-		JTextField jtfHealth = setJTF("Health", frame.getBackground());
-		JTextField jtfHits = setJTF("Number of hits", frame.getBackground());
-		JTextField jtfMelee = setJTF("Melee armor", frame.getBackground());
-		JTextField jtfRanged = setJTF("Ranged armor", frame.getBackground());
+		JLabel jlHealth = setJL("Health");
+		JLabel jlHits = setJL("Number of hits");
+		JLabel jlMelee = setJL("Melee armor");
+		JLabel jlRanged = setJL("Ranged armor");
 		
 		JSpinner jsHealth = new JSpinner(new SpinnerNumberModel(1000, 1, 10000000, 1));
 		JSpinner jsHits = new JSpinner(new SpinnerNumberModel(20, 1, 5000, 1));
@@ -210,16 +211,16 @@ public class GothicDamageCalculator {
 		JSpinner jsRanged = new JSpinner(new SpinnerNumberModel(10, 0, 5000, 1));
 		
 		
-		pHealth.add(jtfHealth);
+		pHealth.add(jlHealth);
 		pHealth.add(jsHealth);
 		
-		pHits.add(jtfHits);
+		pHits.add(jlHits);
 		pHits.add(jsHits);
 		
-		pMelee.add(jtfMelee);
+		pMelee.add(jlMelee);
 		pMelee.add(jsMelee);
 		
-		pRanged.add(jtfRanged);
+		pRanged.add(jlRanged);
 		pRanged.add(jsRanged);
 		
 		
@@ -256,6 +257,7 @@ public class GothicDamageCalculator {
 		// number of normal hits 125
 		// (it is all gonna be one JTextField, but the number could have different color/font size)
 		
+		/*
 		JTextField jtfNoNormalsLabel = setJTF("Number of normal hits:", frame.getBackground());
 		JTextField jtfNoNormals = setJTF("TBD", frame.getBackground());
 		JTextField jtfNormalDmgLabel = setJTF("Normal damage:", frame.getBackground());
@@ -304,6 +306,61 @@ public class GothicDamageCalculator {
 		
 		pResult.add(jbReset,              setGBC(1, 4, GridBagConstraints.WEST));
 		pResult.add(jbRun,                setGBC(3, 4, GridBagConstraints.WEST));
+		*/
+		
+		/*
+		TEST USING JLabel instead of JTextField -- seems to work (gonna keep the JTextField version commented - JIC)
+		*/
+		
+		
+		JLabel jlNoNormalsLabel = setJL("Number of normal hits:");
+		JLabel jlNoNormals = setJL("TBD");
+		JLabel jlNormalDmgLabel = setJL("Normal damage:");
+		JLabel jlNormalDmg = setJL("TBD");
+		
+		JLabel jlNoCritsLabel = setJL("Number of critical hits:");
+		JLabel jlNoCrits = setJL("TBD");
+		JLabel jlCritDmgLabel = setJL("Critical damage:");
+		JLabel jlCritDmg = setJL("TBD");
+		
+		JLabel jlNoLightningsLabel = setJL("Number of lightning hits:");
+		JLabel jlNoLightnings = setJL("TBD");
+		JLabel jlLightningDmgLabel = setJL("Lightning damage:");
+		JLabel jlLightningDmg = setJL("TBD");
+		
+		JLabel jlStatusLabel = setJL("Health left:");
+		JLabel jlStatus = setJL("TBD");
+		JLabel jlTotalDmgLabel = setJL("Total damage:");
+		JLabel jlTotalDmg = setJL("TBD");
+		
+		JButton jbReset = new JButton("Reset");
+		JButton jbRun = new JButton("Run");
+		
+		pResult.setLayout(new GridBagLayout());
+		
+		
+		pResult.add(jlNoNormalsLabel,    setGBC(0, 0, GridBagConstraints.EAST));
+		pResult.add(jlNoNormals,         setGBC(1, 0));
+		pResult.add(jlNormalDmgLabel,    setGBC(2, 0, GridBagConstraints.EAST));
+		pResult.add(jlNormalDmg,         setGBC(3, 0));
+		
+		pResult.add(jlNoCritsLabel,      setGBC(0, 1, GridBagConstraints.EAST));
+		pResult.add(jlNoCrits,           setGBC(1, 1));
+		pResult.add(jlCritDmgLabel,      setGBC(2, 1, GridBagConstraints.EAST));
+		pResult.add(jlCritDmg,           setGBC(3, 1));
+		
+		pResult.add(jlNoLightningsLabel, setGBC(0, 2, GridBagConstraints.EAST));
+		pResult.add(jlNoLightnings,      setGBC(1, 2));
+		pResult.add(jlLightningDmgLabel, setGBC(2, 2, GridBagConstraints.EAST));
+		pResult.add(jlLightningDmg,      setGBC(3, 2));
+		
+		pResult.add(jlStatusLabel,       setGBC(0, 3, GridBagConstraints.EAST));
+		pResult.add(jlStatus,            setGBC(1, 3));
+		pResult.add(jlTotalDmgLabel,     setGBC(2, 3, GridBagConstraints.EAST));
+		pResult.add(jlTotalDmg,          setGBC(3, 3));
+		
+		pResult.add(jbReset,             setGBC(1, 4, GridBagConstraints.WEST));
+		pResult.add(jbRun,               setGBC(3, 4, GridBagConstraints.WEST));
 		
 		
 		
@@ -315,7 +372,7 @@ public class GothicDamageCalculator {
 	}
 	
 	private JLabel setJL(String str) {
-		return new JLabel();
+		return new JLabel(str);
 	}
 	
 	private JTextField setJTF(String str, Color color) {
