@@ -144,6 +144,7 @@ public class GothicDamageCalculator {
 		*/
 		
 		// BoxLayout - 
+		/*
 		JPanel pStr = new JPanel();
 		JPanel pDex = new JPanel();
 		JPanel p1HSkill = new JPanel();
@@ -153,8 +154,6 @@ public class GothicDamageCalculator {
 		pDex.setLayout(new BoxLayout(pDex, BoxLayout.X_AXIS));
 		p1HSkill.setLayout(new BoxLayout(p1HSkill, BoxLayout.X_AXIS));
 		p2HSkill.setLayout(new BoxLayout(p2HSkill, BoxLayout.X_AXIS));
-		
-		
 		
 		JLabel jlStr = setJL("Strength");
 		JLabel jlDex = setJL("Dexterity");
@@ -178,14 +177,34 @@ public class GothicDamageCalculator {
 		p2HSkill.add(jl2HSkill);
 		p2HSkill.add(js2HSkill);
 		
-		
-		
-		
 		pNameless.setLayout(new GridLayout(2, 2, 50, 50));
 		pNameless.add(pStr);
 		pNameless.add(p1HSkill);
 		pNameless.add(pDex);
 		pNameless.add(p2HSkill);
+		*/
+		
+		pNameless.setLayout(new GridBagLayout());
+		
+		JLabel jlStr = setJL("Strength");
+		JLabel jlDex = setJL("Dexterity");
+		JLabel jl1HSkill = setJL("1H Skill");
+		JLabel jl2HSkill = setJL("2H Skill");
+		
+		JSpinner jsStrength = new JSpinner(new SpinnerNumberModel(10, 0, 5000, 1));
+		JSpinner jsDexterity = new JSpinner(new SpinnerNumberModel(10, 0, 5000, 1));
+		JSpinner js1HSkill = new JSpinner(new SpinnerNumberModel(10, 0, 100, 1));
+		JSpinner js2HSkill = new JSpinner(new SpinnerNumberModel(10, 0, 100, 1));
+		
+		pNameless.add(jlStr,       setGBC(0, 0, GridBagConstraints.EAST, 10));
+		pNameless.add(jsStrength,  setGBC(1, 0, GridBagConstraints.WEST));
+		pNameless.add(jl1HSkill,   setGBC(2, 0, GridBagConstraints.EAST, 10));
+		pNameless.add(js1HSkill,   setGBC(3, 0, GridBagConstraints.WEST));
+		
+		pNameless.add(jlDex,       setGBC(0, 1, GridBagConstraints.EAST, 10));
+		pNameless.add(jsDexterity, setGBC(1, 1, GridBagConstraints.WEST));
+		pNameless.add(jl2HSkill,   setGBC(2, 1, GridBagConstraints.EAST, 10));
+		pNameless.add(js2HSkill,   setGBC(3, 1, GridBagConstraints.WEST));
 		
 	}
 	
@@ -259,11 +278,11 @@ public class GothicDamageCalculator {
 		
 		pTarget.add(jlHealth, setGBC(0, 0, GridBagConstraints.EAST, 10));
 		pTarget.add(jsHealth, setGBC(1, 0, GridBagConstraints.WEST));
-		pTarget.add(jlHits, setGBC(2, 0, GridBagConstraints.EAST, 10));
-		pTarget.add(jsHits, setGBC(3, 0, GridBagConstraints.WEST));
+		pTarget.add(jlHits,   setGBC(2, 0, GridBagConstraints.EAST, 10));
+		pTarget.add(jsHits,   setGBC(3, 0, GridBagConstraints.WEST));
 		
-		pTarget.add(jlMelee, setGBC(0, 1, GridBagConstraints.EAST, 10));
-		pTarget.add(jsMelee, setGBC(1, 1, GridBagConstraints.WEST));
+		pTarget.add(jlMelee,  setGBC(0, 1, GridBagConstraints.EAST, 10));
+		pTarget.add(jsMelee,  setGBC(1, 1, GridBagConstraints.WEST));
 		pTarget.add(jlRanged, setGBC(2, 1, GridBagConstraints.EAST, 10));
 		pTarget.add(jsRanged, setGBC(3, 1, GridBagConstraints.WEST));
 		
@@ -463,7 +482,7 @@ public class GothicDamageCalculator {
 		rbG2.setBackground(Colors.YELLOW);
 		pGrid.setBackground(Colors.PINK);
 		pRadioButton.setBackground(Colors.BLUE);
-		pNameless.setBackground(Colors.BROWN);
+		pNameless.setBackground(Colors.PURPLE);
 		pWeapon.setBackground(Colors.RED);
 		pTarget.setBackground(Colors.GREEN);
 		pResult.setBackground(Colors.ORANGE);
