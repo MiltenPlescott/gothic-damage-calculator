@@ -11,16 +11,15 @@ import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
-import java.awt.Insets;
 
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
-import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
-import javax.swing.JComponent;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
@@ -34,6 +33,8 @@ import javax.swing.SpinnerNumberModel;
  */
 public class GothicDamageCalculator {
 	MyJFrame frame;
+	
+	// do I really need these ??? appart from frame
 	
 	ButtonGroup rbGroup;
 	
@@ -52,6 +53,8 @@ public class GothicDamageCalculator {
 	
 	GothicDamageCalculator() {
 		frame = new MyJFrame("Gothic Damage Calculator");
+		
+		// do not have to use listener for JFrame
 		frame.addWindowListener(new CloseWindow());
 		frame.setLayout(new BorderLayout(0, 20));	// hgap, vgap
 		
@@ -186,10 +189,10 @@ public class GothicDamageCalculator {
 		
 		pNameless.setLayout(new GridBagLayout());
 		
-		JLabel jlStr = setJL("Strength");
-		JLabel jlDex = setJL("Dexterity");
-		JLabel jl1HSkill = setJL("1H Skill");
-		JLabel jl2HSkill = setJL("2H Skill");
+		JLabel jlStr = setJL("Strength:");
+		JLabel jlDex = setJL("Dexterity:");
+		JLabel jl1HSkill = setJL("1H Skill (%):");
+		JLabel jl2HSkill = setJL("2H Skill (%):");
 		
 		JSpinner jsStrength = new JSpinner(new SpinnerNumberModel(10, 0, 5000, 1));
 		JSpinner jsDexterity = new JSpinner(new SpinnerNumberModel(10, 0, 5000, 1));
@@ -290,6 +293,37 @@ public class GothicDamageCalculator {
 	}
 	
 	private void weaponWidgets() {
+		pWeapon.setLayout(new GridBagLayout());
+		
+		JLabel jlDamage = setJL("Damage:");
+		JLabel jlWeaponType = setJL("Weapon type:");
+		JLabel jlBonusSkill = setJL("Bonus skill (%):");			// enable = false when combobox == bow || xbow
+		JLabel jlLightningDmg = setJL("Lightning damage:");			// enable = false when jcheckBeliar == false
+		JLabel jlLightningChance = setJL("Lightning chance (%):");	// enable = false when jcheckBeliar == false
+		
+		JSpinner jsDamage = new JSpinner(new SpinnerNumberModel(10, 0, 5000, 1));
+		JSpinner jsBonusSkill = new JSpinner(new SpinnerNumberModel(0, 0, 100, 1));			// enable = false when combobox == bow || xbow
+		JSpinner jsLightningDmg = new JSpinner(new SpinnerNumberModel(100, 0, 5000, 1));	// enable = false when jcheckBeliar == false
+		JSpinner jsLightningChance = new JSpinner(new SpinnerNumberModel(12, 0, 100, 1));	// enable = false when jcheckBeliar == false
+		
+		JCheckBox jcheckBeliar = new JCheckBox("Claw of Beliar", false);
+		
+		String[] weaponTypes = {"1H", "2H", "Bow", "Crossbow"};
+		JComboBox jcombo = new JComboBox(weaponTypes);
+		
+		pWeapon.add(jlDamage, setGBC(0, 0, GridBagConstraints.EAST, 10));
+		pWeapon.add(jsDamage, setGBC(1, 0, GridBagConstraints.WEST));
+		pWeapon.add(jlWeaponType, setGBC(2, 0, GridBagConstraints.EAST, 10));
+		pWeapon.add(jcombo,   setGBC(3, 0, GridBagConstraints.WEST));
+		
+		pWeapon.add(jcheckBeliar, setGBC(0, 1, 2, 1, 1.0, 1.0));
+		pWeapon.add(jlBonusSkill, setGBC(2, 1, GridBagConstraints.EAST, 10));
+		pWeapon.add(jsBonusSkill, setGBC(3, 1, GridBagConstraints.WEST));
+		
+		pWeapon.add(jlLightningDmg,    setGBC(0, 2, GridBagConstraints.EAST, 10));
+		pWeapon.add(jsLightningDmg,    setGBC(1, 2, GridBagConstraints.WEST));
+		pWeapon.add(jlLightningChance, setGBC(2, 2, GridBagConstraints.EAST, 10));
+		pWeapon.add(jsLightningChance, setGBC(3, 2, GridBagConstraints.WEST));
 		
 	}
 	
@@ -428,10 +462,13 @@ public class GothicDamageCalculator {
 		
 	}
 	
+	// do not need this if I am not gonnna use horizontalAlignment
 	private JLabel setJL(String str) {
 		return new JLabel(str);
 	}
 	
+	
+	// delete this if I am not gonna use jtf anywhere
 	private JTextField setJTF(String str, Color color) {
 		JTextField jtf = new JTextField(str);
 		jtf.setBackground(color);
