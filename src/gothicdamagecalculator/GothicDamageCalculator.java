@@ -8,6 +8,7 @@ package gothicdamagecalculator;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 
@@ -18,6 +19,7 @@ import javax.swing.border.TitledBorder;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
@@ -151,10 +153,10 @@ public class GothicDamageCalculator {
 		
 		
 		
-		JTextField jtfStr = jtfSet("Strength", frame.getBackground());
-		JTextField jtfDex = jtfSet("Dexterity", frame.getBackground());
-		JTextField jtf1HSkill = jtfSet("1H Skill", frame.getBackground());
-		JTextField jtf2HSkill = jtfSet("2H Skill", frame.getBackground());
+		JTextField jtfStr = setJTF("Strength", frame.getBackground());
+		JTextField jtfDex = setJTF("Dexterity", frame.getBackground());
+		JTextField jtf1HSkill = setJTF("1H Skill", frame.getBackground());
+		JTextField jtf2HSkill = setJTF("2H Skill", frame.getBackground());
 		
 		JSpinner jsStrength = new JSpinner(new SpinnerNumberModel(10, 0, 5000, 1));
 		JSpinner jsDexterity = new JSpinner(new SpinnerNumberModel(10, 0, 5000, 1));
@@ -197,10 +199,10 @@ public class GothicDamageCalculator {
 		
 		
 		// use panel instead of frame to get color ??? in case if frame color != panel color
-		JTextField jtfHealth = jtfSet("Health", frame.getBackground());
-		JTextField jtfHits = jtfSet("Number of hits", frame.getBackground());
-		JTextField jtfMelee = jtfSet("Melee armor", frame.getBackground());
-		JTextField jtfRanged = jtfSet("Ranged armor", frame.getBackground());
+		JTextField jtfHealth = setJTF("Health", frame.getBackground());
+		JTextField jtfHits = setJTF("Number of hits", frame.getBackground());
+		JTextField jtfMelee = setJTF("Melee armor", frame.getBackground());
+		JTextField jtfRanged = setJTF("Ranged armor", frame.getBackground());
 		
 		JSpinner jsHealth = new JSpinner(new SpinnerNumberModel(1000, 1, 10000000, 1));
 		JSpinner jsHits = new JSpinner(new SpinnerNumberModel(20, 1, 5000, 1));
@@ -237,6 +239,11 @@ public class GothicDamageCalculator {
 	// gonna try GridBagLayout for this one
 	private void resultWidgets() {
 		
+		// method default to reset the TBD jtfs, and method update to update them after pressing run button
+		
+		
+		
+		
 		//    number of normal hits		normal dmg
 		//          number of crits		crit dmg
 		// number of lightning hits		lightning dmg
@@ -249,29 +256,56 @@ public class GothicDamageCalculator {
 		// number of normal hits 125
 		// (it is all gonna be one JTextField, but the number could have different color/font size)
 		
-		JTextField jtfNoHitsLabel = jtfSet("Number of normal hits:", frame.getBackground());
-		JTextField jtfNoHits = jtfSet("TBD", frame.getBackground());
-		JTextField jtfNoCritsLabel = jtfSet("Number of critical hits:", frame.getBackground());
-		JTextField jtfNoCrits = jtfSet("TBD", frame.getBackground());
-		JTextField jtfNoLightningsLabel = jtfSet("Number of lightning hits:", frame.getBackground());
-		JTextField jtfNoLightnings = jtfSet("TBD", frame.getBackground());
+		JTextField jtfNoNormalsLabel = setJTF("Number of normal hits:", frame.getBackground());
+		JTextField jtfNoNormals = setJTF("TBD", frame.getBackground());
+		JTextField jtfNormalDmgLabel = setJTF("Normal damage:", frame.getBackground());
+		JTextField jtfNormalDmg = setJTF("TBD", frame.getBackground());
 		
-		JTextField jtfNormalDmgLabel = jtfSet("Normal damage:", frame.getBackground());
-		JTextField jtfNormalDmg = jtfSet("TBD", frame.getBackground());
-		JTextField jtfCritDmgLabel = jtfSet("Critical damage:", frame.getBackground());
-		JTextField jtfCritDmg = jtfSet("TBD", frame.getBackground());
-		JTextField jtfLightningDmgLabel = jtfSet("Lightning damage:", frame.getBackground());
-		JTextField jtfLightningDmg = jtfSet("TBD", frame.getBackground());
+		JTextField jtfNoCritsLabel = setJTF("Number of critical hits:", frame.getBackground());
+		JTextField jtfNoCrits = setJTF("TBD", frame.getBackground());
+		JTextField jtfCritDmgLabel = setJTF("Critical damage:", frame.getBackground());
+		JTextField jtfCritDmg = setJTF("TBD", frame.getBackground());
 		
-		JTextField jtfStatusLabel = jtfSet("Health left:", frame.getBackground());
-		JTextField jtfStatus = jtfSet("TBD", frame.getBackground());
-		JTextField jtfTotalDmgLabel = jtfSet("Total damage:", frame.getBackground());
-		JTextField jtfTotalDmg = jtfSet("TBD", frame.getBackground());
+		JTextField jtfNoLightningsLabel = setJTF("Number of lightning hits:", frame.getBackground());
+		JTextField jtfNoLightnings = setJTF("TBD", frame.getBackground());
+		JTextField jtfLightningDmgLabel = setJTF("Lightning damage:", frame.getBackground());
+		JTextField jtfLightningDmg = setJTF("TBD", frame.getBackground());
+		
+		JTextField jtfStatusLabel = setJTF("Health left:", frame.getBackground());
+		JTextField jtfStatus = setJTF("TBD", frame.getBackground());
+		JTextField jtfTotalDmgLabel = setJTF("Total damage:", frame.getBackground());
+		JTextField jtfTotalDmg = setJTF("TBD", frame.getBackground());
 		
 		JButton jbReset = new JButton("Reset");
 		JButton jbRun = new JButton("Run");
 		
 		pResult.setLayout(new GridBagLayout());
+		
+		
+		pResult.add(jtfNoNormalsLabel,    setGBC(0, 0, 1, 1, 1.0, 1.0));
+		pResult.add(jtfNoNormals,         setGBC(1, 0, 1, 1, 1.0, 1.0));
+		pResult.add(jtfNormalDmgLabel,    setGBC(2, 0, 1, 1, 1.0, 1.0));
+		pResult.add(jtfNormalDmg,         setGBC(3, 0, 1, 1, 1.0, 1.0));
+		
+		pResult.add(jtfNoCritsLabel,      setGBC(0, 1, 1, 1, 1.0, 1.0));
+		pResult.add(jtfNoCrits,           setGBC(1, 1, 1, 1, 1.0, 1.0));
+		pResult.add(jtfCritDmgLabel,      setGBC(2, 1, 1, 1, 1.0, 1.0));
+		pResult.add(jtfCritDmg,           setGBC(3, 1, 1, 1, 1.0, 1.0));
+		
+		pResult.add(jtfNoLightningsLabel, setGBC(0, 2, 1, 1, 1.0, 1.0));
+		pResult.add(jtfNoLightnings,      setGBC(1, 2, 1, 1, 1.0, 1.0));
+		pResult.add(jtfLightningDmgLabel, setGBC(2, 2, 1, 1, 1.0, 1.0));
+		pResult.add(jtfLightningDmg,      setGBC(3, 2, 1, 1, 1.0, 1.0));
+		
+		pResult.add(jtfStatusLabel,       setGBC(0, 3, 1, 1, 1.0, 1.0));
+		pResult.add(jtfStatus,            setGBC(1, 3, 1, 1, 1.0, 1.0));
+		pResult.add(jtfTotalDmgLabel,     setGBC(2, 3, 1, 1, 1.0, 1.0));
+		pResult.add(jtfTotalDmg,          setGBC(3, 3, 1, 1, 1.0, 1.0));
+		
+		pResult.add(jbReset,              setGBC(0, 4, 2, 1, 1.0, 1.0));
+		pResult.add(jbRun,                setGBC(2, 4, 2, 1, 1.0, 1.0));
+		
+		
 		
 		
 		// display single normal hit and crit hit dmg ???? or the user can just use 1 number of total hits ???
@@ -280,10 +314,22 @@ public class GothicDamageCalculator {
 		
 	}
 	
-	private JTextField jtfSet(String str, Color color) {
+	private JTextField setJTF(String str, Color color) {
 		JTextField jtf = new JTextField(str);
 		jtf.setBackground(color);
+		jtf.setEditable(false);		// so far I do not want the user to be able to edit ANY JTextField
 		return jtf;
+	}
+	
+	private GridBagConstraints setGBC(int gridx, int gridy, int gridwidth, int gridheight, double weightx, double weighty) {
+		GridBagConstraints gbc = new GridBagConstraints();
+		gbc.gridx = gridx;
+		gbc.gridy = gridy;
+		gbc.gridwidth = gridwidth;
+		gbc.gridheight = gridheight;
+		gbc.weightx = weightx;
+		gbc.weighty = weighty;
+		return gbc;
 	}
 	
 	/**
