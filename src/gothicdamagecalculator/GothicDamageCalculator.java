@@ -282,28 +282,28 @@ public class GothicDamageCalculator {
 		pResult.setLayout(new GridBagLayout());
 		
 		
-		pResult.add(jtfNoNormalsLabel,    setGBC(0, 0, 1, 1, 1.0, 1.0));
-		pResult.add(jtfNoNormals,         setGBC(1, 0, 1, 1, 1.0, 1.0));
-		pResult.add(jtfNormalDmgLabel,    setGBC(2, 0, 1, 1, 1.0, 1.0));
-		pResult.add(jtfNormalDmg,         setGBC(3, 0, 1, 1, 1.0, 1.0));
+		pResult.add(jtfNoNormalsLabel,    setGBC(0, 0, GridBagConstraints.EAST));
+		pResult.add(jtfNoNormals,         setGBC(1, 0));
+		pResult.add(jtfNormalDmgLabel,    setGBC(2, 0, GridBagConstraints.EAST));
+		pResult.add(jtfNormalDmg,         setGBC(3, 0));
 		
-		pResult.add(jtfNoCritsLabel,      setGBC(0, 1, 1, 1, 1.0, 1.0));
-		pResult.add(jtfNoCrits,           setGBC(1, 1, 1, 1, 1.0, 1.0));
-		pResult.add(jtfCritDmgLabel,      setGBC(2, 1, 1, 1, 1.0, 1.0));
-		pResult.add(jtfCritDmg,           setGBC(3, 1, 1, 1, 1.0, 1.0));
+		pResult.add(jtfNoCritsLabel,      setGBC(0, 1, GridBagConstraints.EAST));
+		pResult.add(jtfNoCrits,           setGBC(1, 1));
+		pResult.add(jtfCritDmgLabel,      setGBC(2, 1, GridBagConstraints.EAST));
+		pResult.add(jtfCritDmg,           setGBC(3, 1));
 		
-		pResult.add(jtfNoLightningsLabel, setGBC(0, 2, 1, 1, 1.0, 1.0));
-		pResult.add(jtfNoLightnings,      setGBC(1, 2, 1, 1, 1.0, 1.0));
-		pResult.add(jtfLightningDmgLabel, setGBC(2, 2, 1, 1, 1.0, 1.0));
-		pResult.add(jtfLightningDmg,      setGBC(3, 2, 1, 1, 1.0, 1.0));
+		pResult.add(jtfNoLightningsLabel, setGBC(0, 2, GridBagConstraints.EAST));
+		pResult.add(jtfNoLightnings,      setGBC(1, 2));
+		pResult.add(jtfLightningDmgLabel, setGBC(2, 2, GridBagConstraints.EAST));
+		pResult.add(jtfLightningDmg,      setGBC(3, 2));
 		
-		pResult.add(jtfStatusLabel,       setGBC(0, 3, 1, 1, 1.0, 1.0));
-		pResult.add(jtfStatus,            setGBC(1, 3, 1, 1, 1.0, 1.0));
-		pResult.add(jtfTotalDmgLabel,     setGBC(2, 3, 1, 1, 1.0, 1.0));
-		pResult.add(jtfTotalDmg,          setGBC(3, 3, 1, 1, 1.0, 1.0));
+		pResult.add(jtfStatusLabel,       setGBC(0, 3, GridBagConstraints.EAST));
+		pResult.add(jtfStatus,            setGBC(1, 3));
+		pResult.add(jtfTotalDmgLabel,     setGBC(2, 3, GridBagConstraints.EAST));
+		pResult.add(jtfTotalDmg,          setGBC(3, 3));
 		
-		pResult.add(jbReset,              setGBC(0, 4, 2, 1, 1.0, 1.0));
-		pResult.add(jbRun,                setGBC(2, 4, 2, 1, 1.0, 1.0));
+		pResult.add(jbReset,              setGBC(1, 4, GridBagConstraints.WEST));
+		pResult.add(jbRun,                setGBC(3, 4, GridBagConstraints.WEST));
 		
 		
 		
@@ -314,6 +314,10 @@ public class GothicDamageCalculator {
 		
 	}
 	
+	private JLabel setJL(String str) {
+		return new JLabel();
+	}
+	
 	private JTextField setJTF(String str, Color color) {
 		JTextField jtf = new JTextField(str);
 		jtf.setBackground(color);
@@ -321,7 +325,19 @@ public class GothicDamageCalculator {
 		return jtf;
 	}
 	
+	private GridBagConstraints setGBC(int gridx, int gridy) {
+		return setGBC(gridx, gridy, 1, 1, 1.0, 1.0, GridBagConstraints.CENTER);
+	}
+	
+	private GridBagConstraints setGBC(int gridx, int gridy, int anchor) {
+		return setGBC(gridx, gridy, 1, 1, 1.0, 1.0, anchor);
+	}
+	
 	private GridBagConstraints setGBC(int gridx, int gridy, int gridwidth, int gridheight, double weightx, double weighty) {
+		return setGBC(gridx, gridy, gridwidth, gridheight, weightx, weighty, GridBagConstraints.CENTER);
+	}
+	
+	private GridBagConstraints setGBC(int gridx, int gridy, int gridwidth, int gridheight, double weightx, double weighty, int anchor) {
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.gridx = gridx;
 		gbc.gridy = gridy;
@@ -329,6 +345,7 @@ public class GothicDamageCalculator {
 		gbc.gridheight = gridheight;
 		gbc.weightx = weightx;
 		gbc.weighty = weighty;
+		gbc.anchor = anchor;
 		return gbc;
 	}
 	
