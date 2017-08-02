@@ -11,6 +11,7 @@ import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Insets;
 
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
@@ -19,6 +20,7 @@ import javax.swing.border.TitledBorder;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
@@ -188,6 +190,7 @@ public class GothicDamageCalculator {
 	}
 	
 	private void targetWidgets() {
+		/*
 		JPanel pHealth = new JPanel();
 		JPanel pHits = new JPanel();
 		JPanel pMelee = new JPanel();
@@ -230,6 +233,41 @@ public class GothicDamageCalculator {
 		pTarget.add(pMelee);
 		pTarget.add(pHits);
 		pTarget.add(pRanged);
+		*/
+		
+		// TEST USING GridBagLayout instead of BoxLayout
+		pTarget.setLayout(new GridBagLayout());
+		
+		JLabel jlHealth = setJL("Health:");
+		JLabel jlHits = setJL("Number of hits:");
+		JLabel jlMelee = setJL("Melee armor:");
+		JLabel jlRanged = setJL("Ranged armor:");
+		
+		JSpinner jsHealth = new JSpinner(new SpinnerNumberModel(1000, 1, 1000000, 1));
+		JSpinner jsHits = new JSpinner(new SpinnerNumberModel(20, 1, 5000, 1));
+		JSpinner jsMelee = new JSpinner(new SpinnerNumberModel(10, 0, 5000, 1));
+		JSpinner jsRanged = new JSpinner(new SpinnerNumberModel(10, 0, 5000, 1));
+		
+		/*
+		ALIGNMENT of number insdie JSpinner -- probably not gonna use it since the arrows of spinner are on the right
+		and far away from the number (it would not look any better so there is no point in doing extra work)
+		
+		JComponent jc = jsMelee.getEditor();
+		JSpinner.DefaultEditor foo = (JSpinner.DefaultEditor)jc;
+		foo.getTextField().setHorizontalAlignment(JTextField.LEFT);
+		*/
+		
+		pTarget.add(jlHealth, setGBC(0, 0, GridBagConstraints.EAST, 10));
+		pTarget.add(jsHealth, setGBC(1, 0, GridBagConstraints.WEST));
+		pTarget.add(jlHits, setGBC(2, 0, GridBagConstraints.EAST, 10));
+		pTarget.add(jsHits, setGBC(3, 0, GridBagConstraints.WEST));
+		
+		pTarget.add(jlMelee, setGBC(0, 1, GridBagConstraints.EAST, 10));
+		pTarget.add(jsMelee, setGBC(1, 1, GridBagConstraints.WEST));
+		pTarget.add(jlRanged, setGBC(2, 1, GridBagConstraints.EAST, 10));
+		pTarget.add(jsRanged, setGBC(3, 1, GridBagConstraints.WEST));
+		
+		
 	}
 	
 	private void weaponWidgets() {
@@ -383,18 +421,22 @@ public class GothicDamageCalculator {
 	}
 	
 	private GridBagConstraints setGBC(int gridx, int gridy) {
-		return setGBC(gridx, gridy, 1, 1, 1.0, 1.0, GridBagConstraints.CENTER);
+		return setGBC(gridx, gridy, 1, 1, 1.0, 1.0, GridBagConstraints.CENTER, 0);
 	}
 	
 	private GridBagConstraints setGBC(int gridx, int gridy, int anchor) {
-		return setGBC(gridx, gridy, 1, 1, 1.0, 1.0, anchor);
+		return setGBC(gridx, gridy, 1, 1, 1.0, 1.0, anchor, 0);
+	}
+	
+	private GridBagConstraints setGBC(int gridx, int gridy, int anchor, int ipadx) {
+		return setGBC(gridx, gridy, 1, 1, 1.0, 1.0, anchor, ipadx);
 	}
 	
 	private GridBagConstraints setGBC(int gridx, int gridy, int gridwidth, int gridheight, double weightx, double weighty) {
-		return setGBC(gridx, gridy, gridwidth, gridheight, weightx, weighty, GridBagConstraints.CENTER);
+		return setGBC(gridx, gridy, gridwidth, gridheight, weightx, weighty, GridBagConstraints.CENTER, 0);
 	}
 	
-	private GridBagConstraints setGBC(int gridx, int gridy, int gridwidth, int gridheight, double weightx, double weighty, int anchor) {
+	private GridBagConstraints setGBC(int gridx, int gridy, int gridwidth, int gridheight, double weightx, double weighty, int anchor, int ipadx) {
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.gridx = gridx;
 		gbc.gridy = gridy;
@@ -403,6 +445,7 @@ public class GothicDamageCalculator {
 		gbc.weightx = weightx;
 		gbc.weighty = weighty;
 		gbc.anchor = anchor;
+		gbc.ipadx = ipadx;
 		return gbc;
 	}
 	
