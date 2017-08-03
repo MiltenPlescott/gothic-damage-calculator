@@ -17,10 +17,10 @@ public class MyJFrame extends JFrame {
 	
 	MyJFrame(String name) {
 		super(name);
-		gui();
+		prepareFrame();
 	}
 	
-	private void gui() {
+	private void prepareFrame() {
 		this.setVisible(true);
 		// TODO: dynamic resizing here
 		this.setSize(500, 500);

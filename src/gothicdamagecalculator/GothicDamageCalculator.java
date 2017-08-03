@@ -26,6 +26,9 @@ import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+
 
 /**
  *
@@ -105,6 +108,8 @@ public class GothicDamageCalculator {
 		targetWidgets();
 		weaponWidgets();
 		resultWidgets();
+		
+		frame.pack();
 		
 		/*
 		COLOR CODING
@@ -460,6 +465,13 @@ public class GothicDamageCalculator {
 		// but it would be necessary to use high crit chance  ... or I can find a place to fit in two more JTextFields ...
 		
 		
+		
+		//jbRun.addActionListener(new );
+		
+		
+		
+		
+		
 	}
 	
 	// do not need this if I am not gonnna use horizontalAlignment
@@ -509,7 +521,33 @@ public class GothicDamageCalculator {
 	 * @param args the command line arguments
 	 */
 	public static void main(String[] args) {
+		// look and feel testing
+		try {
+			UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+		}
+		catch(ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
+			e.printStackTrace();
+		}
+		
+
+		UIManager.LookAndFeelInfo[] lafInfo = UIManager.getInstalledLookAndFeels();
+		
+		
+		for (UIManager.LookAndFeelInfo i : lafInfo) {
+			System.out.println(i.getName());
+		}
+		
+		
+		// use menu->menu item to put in all available L&F and let the user to choose ???
+		
+		
+		
+		
+		
+		
+		
 		GothicDamageCalculator gdc = new GothicDamageCalculator();
+		
 	}
 	
 	
