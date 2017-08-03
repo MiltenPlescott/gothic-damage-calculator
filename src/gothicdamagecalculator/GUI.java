@@ -26,16 +26,15 @@ import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
+
 
 
 /**
  *
  * @author Milten Plescott
  */
-public class GothicDamageCalculator {
-	MyJFrame frame;
+public class GUI {
+	//MyFrame frame;
 	
 	// do I really need these ??? appart from frame
 	
@@ -54,11 +53,8 @@ public class GothicDamageCalculator {
 	JPanel pTarget;
 	JPanel pResult;
 	
-	GothicDamageCalculator() {
-		frame = new MyJFrame("Gothic Damage Calculator");
-		
-		// do not have to use listener for JFrame
-		frame.addWindowListener(new CloseWindow());
+	public GUI(MyFrame frame) {
+
 		frame.setLayout(new BorderLayout(0, 20));	// hgap, vgap
 		
 		rbG1 = new JRadioButton("Gothic 1", false);	// false - initially unselected
@@ -104,17 +100,25 @@ public class GothicDamageCalculator {
 		
 		
 		
+		
+		NamelessHero nh = new NamelessHero(pNameless);
+		Weapon wp = new Weapon(pWeapon);
+		Target tr = new Target(pTarget);
+		Result rs = new Result(pResult);
+		
+		/*
 		namelessWidgets();
 		targetWidgets();
 		weaponWidgets();
 		resultWidgets();
+		*/
 		
-		frame.pack();
+		
 		
 		/*
 		COLOR CODING
 		*/
-		colorCoding();
+		colorCoding(frame);
 	}
 	
 	private void border(JPanel jp, String str) {
@@ -332,7 +336,6 @@ public class GothicDamageCalculator {
 		
 	}
 	
-	
 	// gonna try GridBagLayout for this one
 	private void resultWidgets() {
 		
@@ -479,7 +482,6 @@ public class GothicDamageCalculator {
 		return new JLabel(str);
 	}
 	
-	
 	// delete this if I am not gonna use jtf anywhere
 	private JTextField setJTF(String str, Color color) {
 		JTextField jtf = new JTextField(str);
@@ -516,42 +518,10 @@ public class GothicDamageCalculator {
 		gbc.ipadx = ipadx;
 		return gbc;
 	}
-	
-	/**
-	 * @param args the command line arguments
-	 */
-	public static void main(String[] args) {
-		// look and feel testing
-		try {
-			UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-		}
-		catch(ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
-			e.printStackTrace();
-		}
-		
 
-		UIManager.LookAndFeelInfo[] lafInfo = UIManager.getInstalledLookAndFeels();
-		
-		
-		for (UIManager.LookAndFeelInfo i : lafInfo) {
-			System.out.println(i.getName());
-		}
-		
-		
-		// use menu->menu item to put in all available L&F and let the user to choose ???
-		
-		
-		
-		
-		
-		
-		
-		GothicDamageCalculator gdc = new GothicDamageCalculator();
-		
-	}
 	
 	
-	private void colorCoding() {
+	private void colorCoding(MyFrame frame) {
 		frame.setBackground(Colors.GRAY);
 		rbG1.setBackground(Colors.CYAN);
 		rbG2.setBackground(Colors.YELLOW);

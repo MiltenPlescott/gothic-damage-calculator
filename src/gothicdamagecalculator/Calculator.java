@@ -5,16 +5,20 @@
  */
 package gothicdamagecalculator;
 
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 /**
  *
  * @author Milten Plescott
  */
-public class CloseWindow extends WindowAdapter {
+
+
+// this class/file is no longer needed
+
+public class Calculator implements ActionListener {
 	@Override
-	public void windowClosing(WindowEvent e) {
+	public void actionPerformed(ActionEvent e) {
 		System.exit(0);
 	}
 }
