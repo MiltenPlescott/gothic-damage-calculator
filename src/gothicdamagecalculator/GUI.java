@@ -7,10 +7,16 @@ package gothicdamagecalculator;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
@@ -20,6 +26,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -27,7 +34,9 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.JTextPane;
 import javax.swing.SpinnerNumberModel;
 
 
@@ -36,8 +45,8 @@ import javax.swing.SpinnerNumberModel;
  *
  * @author Milten Plescott
  */
-public class GUI {
-	//MyFrame frame;
+public class GUI extends ComponentAdapter {
+	public MyFrame frame;
 	
 	// do I really need these ??? appart from frame
 	
@@ -45,7 +54,6 @@ public class GUI {
 	public Weapon weapon;
 	public Target target;
 	public Result result;
-	
 	
 	ButtonGroup rbGroup;
 	
@@ -63,6 +71,7 @@ public class GUI {
 	JPanel pResult;
 	
 	public GUI(MyFrame frame) {
+		this.frame = frame;
 
 		frame.setLayout(new BorderLayout(0, 20));	// hgap, vgap
 		
@@ -105,11 +114,6 @@ public class GUI {
 		
 		
 		
-		
-		
-		
-		
-		
 		namelessHero = new NamelessHero(pNameless);
 		weapon = new Weapon(pWeapon);
 		target = new Target(pTarget);
@@ -122,27 +126,116 @@ public class GUI {
 		resultWidgets();
 		*/
 		
-		menu(frame);
+		menu();
+		
+		
 		
 		/*
 		COLOR CODING
 		*/
-		colorCoding(frame);
+		colorCoding();
 	}
 	
-	private void menu(MyFrame frame) {
+	private void menu() {
 		JMenuBar jmb = new JMenuBar();
 		JMenu jm = new JMenu("Help");
 		JMenuItem jmiDisclaimer = new JMenuItem("Disclaimer");
+		JMenuItem jmiFormulas = new JMenuItem("Used formulas");
 		JMenuItem jmiHowTo = new JMenuItem("How to use Gothic Damage Calculator");
 		JMenuItem jmiAbout = new JMenuItem("About");
+		
+		jmb.add(jm);
+		jm.add(jmiDisclaimer);
+		jm.add(jmiFormulas);
+		jm.add(jmiHowTo);
+		jm.add(jmiAbout);
+		
+		frame.setJMenuBar(jmb);
+		
+		
+		jmiDisclaimer.addActionListener((ActionEvent e) -> {
+			dialog(frame, e);
+		});
+		
+		jmiFormulas.addActionListener((ActionEvent e) -> {
+			dialog(frame, e);
+		});
+		
+		jmiHowTo.addActionListener((ActionEvent e) -> {
+			dialog(frame, e);
+		});
+		
+		jmiAbout.addActionListener((ActionEvent e) -> {
+			dialog(frame, e);
+		});
+		
 	}
 	
+	private void dialog(MyFrame frame, ActionEvent e) {
+		String origin = e.getActionCommand();
+		
+		switch (origin) {
+			case "Disclaimer": 
+				break;
+			case "Used formulas": 
+				break;
+			case "How to use Gothic Damage Calculator": 
+				break;
+			case "About": 
+				break;
+		}
+		
+		JTextArea jta = new JTextArea("adsaadsaadsaadsaadsaadsaadsaadsaadsa");
+		jta.setEditable(false);
+		//jta.setHighlighter(null);
+		jta.setBackground(Colors.GRAY);
+		jta.setLineWrap(true);
+		
+		JTextPane jtp = new JTextPane();
+		jtp.setEditable(false);
+		jtp.setBackground(Colors.GRAY);
+		
+		
+		JDialog jd = new JDialog(frame, "Dia=adaj", true);
+		jd.add(jta);
+		jd.setSize(300, 300);
+		jd.setVisible(true);
+		
+		// http://forum.worldofplayers.de/forum/threads/127320-Damage-System?p=2198181#post2198181
+		
+		
+		
+		
+	}
+	
+	@Override
+	public void componentResized(ComponentEvent e) {
+		Dimension dim = frame.getBounds().getSize();
+		System.out.println("" + dim.width + " x " + dim.height);
+		System.out.println(dim.width + dim.height);
+		
+		Font f = new Font(null, Font.PLAIN, (dim.width + dim.height) / 69);
+		
+		this.target.jlHealth.setFont(f);
+		this.target.jlHits.setFont(f);
+		this.target.jlMelee.setFont(f);
+		this.target.jlRanged.setFont(f);
+		
+		this.target.jsHealth.setFont(f);
+		this.target.jsHits.setFont(f);
+		this.target.jsMelee.setFont(f);
+		this.target.jsRanged.setFont(f);
+		
+		((JSpinner.NumberEditor) this.target.jsHealth.getEditor()).getTextField().setFont(f);
+		((JSpinner.NumberEditor) this.target.jsHits.getEditor()).getTextField().setFont(f);
+		((JSpinner.NumberEditor) this.target.jsMelee.getEditor()).getTextField().setFont(f);
+		((JSpinner.NumberEditor) this.target.jsRanged.getEditor()).getTextField().setFont(f);
+	}
 	
 	private void border(JPanel jp, String str) {
 		lBorder = new LineBorder(Colors.BLUISH, 5);	// thickness
-		tBorder = new TitledBorder(lBorder, str, TitledBorder.LEFT, TitledBorder.TOP);
-		tBorder.setTitleColor(Colors.WHITE);
+		tBorder = new TitledBorder(lBorder, str, TitledBorder.CENTER, TitledBorder.TOP);
+		tBorder.setTitleColor(Colors.BLACK);
 		//jp.setBorder(tBorder);
 		
 		
@@ -539,7 +632,7 @@ public class GUI {
 
 	
 	
-	private void colorCoding(MyFrame frame) {
+	private void colorCoding() {
 		frame.setBackground(Colors.GRAY);
 		rbG1.setBackground(Colors.CYAN);
 		rbG2.setBackground(Colors.YELLOW);

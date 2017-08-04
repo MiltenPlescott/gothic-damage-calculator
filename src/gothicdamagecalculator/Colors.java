@@ -14,6 +14,7 @@ import java.awt.Color;
 public final class Colors {
 	public static final Color GRAY = new Color(240, 240, 240);
 	public static final Color BLUISH = new Color(88, 139, 193);
+	public static final Color BLACK = new Color(0, 0, 0);
 	
 	/*
 	COLORS FOR COLOR CODING

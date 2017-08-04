@@ -33,6 +33,7 @@ public class MyFrame extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		this.gui = new GUI(this);
+		this.addComponentListener(gui);
 		
 		this.pack();
 		this.setVisible(true);

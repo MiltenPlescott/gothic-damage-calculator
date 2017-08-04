@@ -5,6 +5,7 @@
  */
 package gothicdamagecalculator;
 
+import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -34,9 +35,6 @@ public class Calculator implements ActionListener {
 		else {
 			gameG2(calcInput);
 		}
-		
-		
-		
 	}
 	
 	public void gameG1(CalculationInput calcInput) {
