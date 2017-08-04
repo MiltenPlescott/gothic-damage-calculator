@@ -7,6 +7,8 @@ package gothicdamagecalculator;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -59,6 +61,9 @@ public class Weapon {
 		jlBonusSkill = new JLabel("Bonus skill (%):");			// enable = false when combobox == bow || xbow
 		jlLightningDmg = new JLabel("Lightning damage:");			// enable = false when jcheckBeliar == false
 		jlLightningChance = new JLabel("Lightning chance (%):");	// enable = false when jcheckBeliar == false
+		
+		jlLightningDmg.setEnabled(false);
+		jlLightningChance.setEnabled(false);
 	}
 	
 	private void createJSpinners() {
@@ -66,10 +71,30 @@ public class Weapon {
 		jsBonusSkill = new JSpinner(new SpinnerNumberModel(0, 0, 100, 1));			// enable = false when combobox == bow || xbow
 		jsLightningDmg = new JSpinner(new SpinnerNumberModel(100, 0, 5000, 1));	// enable = false when jcheckBeliar == false
 		jsLightningChance = new JSpinner(new SpinnerNumberModel(12, 0, 100, 1));	// enable = false when jcheckBeliar == false
+		
+		jsLightningDmg.setEnabled(false);
+		jsLightningChance.setEnabled(false);
 	}
 	
 	private void createOtherComponents() {
 		jcheckBeliar = new JCheckBox("Claw of Beliar", false);	// false -> not checked by default
+		jcheckBeliar.addItemListener(new ItemListener() {
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				if (jcheckBeliar.isSelected() == true) {
+					jlLightningDmg.setEnabled(true);
+					jsLightningDmg.setEnabled(true);
+					jlLightningChance.setEnabled(true);
+					jsLightningChance.setEnabled(true);
+				}
+				else {
+					jlLightningDmg.setEnabled(false);
+					jsLightningDmg.setEnabled(false);
+					jlLightningChance.setEnabled(false);
+					jsLightningChance.setEnabled(false);
+				}
+			}
+		});
 		String[] weaponTypes = {"1H", "2H", "Bow", "Crossbow"};
 		jcomboWeaponType = new JComboBox(weaponTypes);
 	}

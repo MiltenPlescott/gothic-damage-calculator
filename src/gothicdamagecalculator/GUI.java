@@ -21,6 +21,9 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
@@ -37,6 +40,12 @@ public class GUI {
 	//MyFrame frame;
 	
 	// do I really need these ??? appart from frame
+	
+	public NamelessHero namelessHero;
+	public Weapon weapon;
+	public Target target;
+	public Result result;
+	
 	
 	ButtonGroup rbGroup;
 	
@@ -101,10 +110,10 @@ public class GUI {
 		
 		
 		
-		NamelessHero nh = new NamelessHero(pNameless);
-		Weapon wp = new Weapon(pWeapon);
-		Target tr = new Target(pTarget);
-		Result rs = new Result(pResult);
+		namelessHero = new NamelessHero(pNameless);
+		weapon = new Weapon(pWeapon);
+		target = new Target(pTarget);
+		result = new Result(pResult, frame);
 		
 		/*
 		namelessWidgets();
@@ -113,7 +122,7 @@ public class GUI {
 		resultWidgets();
 		*/
 		
-		
+		menu(frame);
 		
 		/*
 		COLOR CODING
@@ -121,8 +130,17 @@ public class GUI {
 		colorCoding(frame);
 	}
 	
+	private void menu(MyFrame frame) {
+		JMenuBar jmb = new JMenuBar();
+		JMenu jm = new JMenu("Help");
+		JMenuItem jmiDisclaimer = new JMenuItem("Disclaimer");
+		JMenuItem jmiHowTo = new JMenuItem("How to use Gothic Damage Calculator");
+		JMenuItem jmiAbout = new JMenuItem("About");
+	}
+	
+	
 	private void border(JPanel jp, String str) {
-		lBorder = new LineBorder(Colors.BLUE, 5);	// thickness
+		lBorder = new LineBorder(Colors.BLUISH, 5);	// thickness
 		tBorder = new TitledBorder(lBorder, str, TitledBorder.LEFT, TitledBorder.TOP);
 		tBorder.setTitleColor(Colors.WHITE);
 		//jp.setBorder(tBorder);

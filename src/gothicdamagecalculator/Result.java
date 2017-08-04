@@ -48,10 +48,10 @@ public class Result {
 	public JButton jbReset;
 	public JButton jbRun;
 	
-	public Result(JPanel pResult) {
+	public Result(JPanel pResult, MyFrame frame) {
 		pResult.setLayout(new GridBagLayout());
 		createJLabels();
-		createJButtons();
+		createJButtons(frame);
 		addComponentsToPanel(pResult);
 	}
 	
@@ -77,9 +77,10 @@ public class Result {
 		jlTotalDmg = new JLabel("TBD");
 	}
 	
-	private void createJButtons() {
+	private void createJButtons(MyFrame frame) {
 		jbReset = new JButton("Reset");
 		jbRun = new JButton("Run");
+		jbRun.addActionListener(new Calculator(frame));
 	}
 	
 

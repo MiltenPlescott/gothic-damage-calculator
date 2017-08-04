@@ -14,6 +14,14 @@ import java.awt.Insets;
  */
 public class GridBag {
 	
+	/*
+	BASIC LAYOUT CONSTRAINTS SETTINGS:
+
+	JSpinner (col, row, noCol, noRow, 1.0, 1.0, EAST, NONE, insets(0,0,0,0), 10, 0)
+	JLabel   (col, row, noCol, noRow, 1.0, 1.0, WEST, NONE, insets(0,0,0,0),  0, 0)
+	*/
+	
+	
 	public static GridBagConstraints setGBC(int gridx, int gridy, int gridwidth, int gridheight, double weightx, double weighty, int anchor, int ipadx) {
 		return new GridBagConstraints(
 				gridx,
@@ -31,10 +39,10 @@ public class GridBag {
 	}
 	
 	public static GridBagConstraints setGBC(int gridx, int gridy, int anchor) {
-		return setGBC(gridx, gridy, 1, 1, 0.0, 0.0, anchor, 0);
+		return setGBC(gridx, gridy, 1, 1, 1.0, 1.0, anchor, 0);
 	}
 	
 	public static GridBagConstraints setGBC(int gridx, int gridy, int anchor, int ipadx) {
-		return setGBC(gridx, gridy, 1, 1, 0.0, 0.0, anchor, ipadx);
+		return setGBC(gridx, gridy, 1, 1, 1.0, 1.0, anchor, ipadx);
 	}
 }

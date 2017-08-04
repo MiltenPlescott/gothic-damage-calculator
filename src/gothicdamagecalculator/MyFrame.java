@@ -5,8 +5,6 @@
  */
 package gothicdamagecalculator;
 
-import java.awt.Dimension;
-
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -62,6 +60,40 @@ public class MyFrame extends JFrame {
 		
 		
 		// use menu->menu item to put in all available L&F and let the user to choose ???
+		
+		
+		
+		
+		
+		/*
+		UIManager.setLookAndFeel(lookAndFeel);
+
+			// If L&F = "Metal", set the theme
+
+			if (LOOKANDFEEL.equals("Metal")) {
+				if (THEME.equals("DefaultMetal"))
+					MetalLookAndFeel.setCurrentTheme(new DefaultMetalTheme());
+				else if (THEME.equals("Ocean"))
+					MetalLookAndFeel.setCurrentTheme(new OceanTheme());
+				else
+					MetalLookAndFeel.setCurrentTheme(new TestTheme());
+				UIManager.setLookAndFeel(new MetalLookAndFeel()); 
+			}	
+
+
+		
+		// Set cross-platform Java L&F (also called "Metal")
+		UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+
+		// Set System L&F
+		UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+
+		// Set cross-platform Java L&F (also called "Metal")
+		UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
+		UIManager.setLookAndFeel("javax.swing.plaf.windows.WindowsLookAndFeel");
+		UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+		UIManager.setLookAndFeel("javax.swing.plaf.motif.MotifLookAndFeel");
+		*/
 		
 		
 		
