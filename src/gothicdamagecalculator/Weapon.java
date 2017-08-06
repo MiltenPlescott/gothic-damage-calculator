@@ -12,10 +12,15 @@ import java.awt.event.ItemListener;
 
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.UIManager;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.LineBorder;
+import javax.swing.border.MatteBorder;
 
 
 /**
@@ -47,11 +52,11 @@ public class Weapon {
 	public JCheckBox jcheckBeliar;
 	public JComboBox jcomboWeaponType;
 	
-	public Weapon(JPanel pWeapon) {
+	public Weapon(JPanel pWeapon, MyFrame frame) {
 		pWeapon.setLayout(new GridBagLayout());
 		createJLabels();
 		createJSpinners();
-		createOtherComponents();
+		createOtherComponents(frame);
 		addComponentsToPanel(pWeapon);
 	}
 	
@@ -76,8 +81,9 @@ public class Weapon {
 		jsLightningChance.setEnabled(false);
 	}
 	
-	private void createOtherComponents() {
+	private void createOtherComponents(MyFrame frame) {
 		jcheckBeliar = new JCheckBox("Claw of Beliar", false);	// false -> not checked by default
+		
 		jcheckBeliar.addItemListener(new ItemListener() {
 			@Override
 			public void itemStateChanged(ItemEvent e) {
@@ -86,17 +92,44 @@ public class Weapon {
 					jsLightningDmg.setEnabled(true);
 					jlLightningChance.setEnabled(true);
 					jsLightningChance.setEnabled(true);
+					lightningBorders(jsLightningDmg);
+					lightningBorders(jsLightningChance);
 				}
 				else {
 					jlLightningDmg.setEnabled(false);
 					jsLightningDmg.setEnabled(false);
 					jlLightningChance.setEnabled(false);
 					jsLightningChance.setEnabled(false);
+					resetLightningBorders(jsLightningDmg);
+					resetLightningBorders(jsLightningChance);
 				}
 			}
 		});
+		
 		String[] weaponTypes = {"1H", "2H", "Bow", "Crossbow"};
 		jcomboWeaponType = new JComboBox(weaponTypes);
+		//jcomboWeaponType.addActionListener(new CustomBorder(frame));		// moved to MyFrame -> main()
+	}
+	
+	private void lightningBorders(JSpinner spinner) {
+		LineBorder lb = new LineBorder(Colors.GREEN, 2);					
+																		// MatteBorder(top, left, bottom, right, color)
+		MatteBorder mbTR = new MatteBorder(2, 0, 0, 2, Colors.GREEN);		// top-right border for TOP BUTTON
+		MatteBorder mbBR = new MatteBorder(0, 0, 2, 2, Colors.GREEN);		// bottom-right border for BOTTOM button
+		MatteBorder mbTL = new MatteBorder(1, 1, 0, 0, Colors.GREYISH);	// top-left border for BOTTOM button
+		MatteBorder mbBL = new MatteBorder(0, 1, 1, 0, Colors.GREYISH);	// bottom-left border for TOP button
+		CompoundBorder cbTB = new CompoundBorder(mbTR, mbBL);
+		CompoundBorder cbBB = new CompoundBorder(mbBR, mbTL);
+		
+		spinner.setBorder(lb);
+		((JComponent) spinner.getComponent(0)).setBorder(cbTB);		// top button
+		((JComponent) spinner.getComponent(1)).setBorder(cbBB);		// bottom button
+	}
+	
+	private void resetLightningBorders(JSpinner spinner) {
+		spinner.setBorder(UIManager.getBorder("Spinner.border"));
+		((JComponent) spinner.getComponent(0)).setBorder(UIManager.getBorder("Spinner.arrowButtonBorder"));
+		((JComponent) spinner.getComponent(1)).setBorder(UIManager.getBorder("Spinner.arrowButtonBorder"));
 	}
 	
 	private void addComponentsToPanel(JPanel pWeapon) {

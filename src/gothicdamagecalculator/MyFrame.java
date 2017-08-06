@@ -29,12 +29,11 @@ public class MyFrame extends JFrame {
 		this.setName("Gothic Damage Calculator");
 		//this.setSize(500, 500);
 		//this.setMinimumSize(new Dimension(100, 100));
-		this.setBackground(Colors.GRAY);
+		this.setBackground(Colors.GREY);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		this.gui = new GUI(this);
-		this.addComponentListener(gui);
-		
+
 		this.pack();
 		this.setVisible(true);
 	}
@@ -61,8 +60,6 @@ public class MyFrame extends JFrame {
 		
 		
 		// use menu->menu item to put in all available L&F and let the user to choose ???
-		
-		
 		
 		
 		
@@ -100,5 +97,16 @@ public class MyFrame extends JFrame {
 		
 		//GothicDamageCalculator gdc = new GUI();
 		MyFrame frame = new MyFrame();
+		
+		placeholderName(frame);
+
+	}
+	
+	public static void placeholderName(MyFrame frame) {
+		CustomBorder border = new CustomBorder(frame);
+		frame.gui.rbG1.addActionListener(border);
+		frame.gui.rbG2.addActionListener(border);
+		frame.gui.weapon.jcomboWeaponType.addActionListener(border);
+		border.addBorders();
 	}
 }

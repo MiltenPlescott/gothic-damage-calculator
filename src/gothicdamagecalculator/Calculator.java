@@ -5,7 +5,6 @@
  */
 package gothicdamagecalculator;
 
-import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 

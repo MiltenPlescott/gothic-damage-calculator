@@ -5,16 +5,18 @@
  */
 package gothicdamagecalculator;
 
-import java.awt.Dimension;
-import java.awt.Font;
+import java.awt.Component;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
-import javax.swing.JFrame;
+import javax.swing.border.LineBorder;
+import javax.swing.JComponent;
+import javax.swing.border.MatteBorder;
 
 /**
  *
