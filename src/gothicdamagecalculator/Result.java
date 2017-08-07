@@ -57,30 +57,33 @@ public class Result {
 	
 	private void createJLabels() {
 		jlNoNormalsLabel = new JLabel("Number of normal hits:");
-		jlNoNormals = new JLabel("TBD");
+		jlNoNormals = new JLabel("");
 		jlNormalDmgLabel = new JLabel("Normal damage:");
-		jlNormalDmg = new JLabel("TBD");
+		jlNormalDmg = new JLabel("");
 		
 		jlNoCritsLabel = new JLabel("Number of critical hits:");
-		jlNoCrits = new JLabel("TBD");
+		jlNoCrits = new JLabel("");
 		jlCritDmgLabel = new JLabel("Critical damage:");
-		jlCritDmg = new JLabel("TBD");
+		jlCritDmg = new JLabel("");
 		
 		jlNoLightningsLabel = new JLabel("Number of lightning hits:");
-		jlNoLightnings = new JLabel("TBD");
+		jlNoLightnings = new JLabel("");
 		jlLightningDmgLabel = new JLabel("Lightning damage:");
-		jlLightningDmg = new JLabel("TBD");
+		jlLightningDmg = new JLabel("");
 		
 		jlStatusLabel = new JLabel("Health left:");
-		jlStatus = new JLabel("TBD");
+		jlStatus = new JLabel("");
 		jlTotalDmgLabel = new JLabel("Total damage:");
-		jlTotalDmg = new JLabel("TBD");
+		jlTotalDmg = new JLabel("");
 	}
 	
 	private void createJButtons(MyFrame frame) {
 		jbReset = new JButton("Reset");
 		jbRun = new JButton("Run");
+		jbReset.addActionListener(new ResetButton(frame));
 		jbRun.addActionListener(new Calculator(frame));
+		jbReset.setFocusable(false);
+		jbRun.setFocusable(false);
 	}
 	
 

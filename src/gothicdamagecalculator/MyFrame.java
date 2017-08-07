@@ -5,6 +5,10 @@
  */
 package gothicdamagecalculator;
 
+import java.awt.Dimension;
+import java.awt.GraphicsEnvironment;
+import java.awt.Rectangle;
+
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -33,7 +37,7 @@ public class MyFrame extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		this.gui = new GUI(this);
-
+		
 		this.pack();
 		this.setVisible(true);
 	}
@@ -98,8 +102,19 @@ public class MyFrame extends JFrame {
 		//GothicDamageCalculator gdc = new GUI();
 		MyFrame frame = new MyFrame();
 		
+		
+		frameSize(frame);
+		
+		
 		placeholderName(frame);
+		placeholderName2(frame);
 
+	}
+	
+	public static void frameSize(MyFrame frame) {
+		Rectangle rect = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
+		frame.setMinimumSize(new Dimension(600, 300));
+		frame.setBounds((rect.width-1200)/2, (rect.height-550)/2, 1200, 550);
 	}
 	
 	public static void placeholderName(MyFrame frame) {
@@ -108,5 +123,9 @@ public class MyFrame extends JFrame {
 		frame.gui.rbG2.addActionListener(border);
 		frame.gui.weapon.jcomboWeaponType.addActionListener(border);
 		border.addBorders();
+	}
+	
+	public static void placeholderName2(MyFrame frame) {
+		frame.addComponentListener(new TextStyle(frame));
 	}
 }

@@ -5,12 +5,9 @@
  */
 package gothicdamagecalculator;
 
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
-import javax.swing.JSpinner;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
+
 import javax.swing.JDialog;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -22,7 +19,7 @@ import javax.swing.JTextPane;
  *
  * @author Milten Plescott
  */
-public class Menu extends ComponentAdapter {
+public class Menu {
 	
 	public MyFrame frame;
 	
@@ -44,6 +41,15 @@ public class Menu extends ComponentAdapter {
 		jm.add(jmiFormulas);
 		jm.add(jmiHowTo);
 		jm.add(jmiAbout);
+		
+		Font font = new Font(Font.SANS_SERIF, Font.BOLD, 15);
+		
+		jmb.setFont(font);
+		jm.setFont(font);
+		jmiDisclaimer.setFont(font);
+		jmiFormulas.setFont(font);
+		jmiHowTo.setFont(font);
+		jmiAbout.setFont(font);
 		
 		frame.setJMenuBar(jmb);
 		
@@ -97,33 +103,5 @@ public class Menu extends ComponentAdapter {
 		
 		// http://forum.worldofplayers.de/forum/threads/127320-Damage-System?p=2198181#post2198181
 		
-		
-		
-		
 	}
-	
-		@Override
-	public void componentResized(ComponentEvent e) {
-		Dimension dim = frame.getBounds().getSize();
-		System.out.println("" + dim.width + " x " + dim.height);
-		System.out.println(dim.width + dim.height);
-		
-		Font f = new Font(null, Font.PLAIN, (dim.width + dim.height) / 69);
-		
-		frame.gui.target.jlHealth.setFont(f);
-		frame.gui.target.jlHits.setFont(f);
-		frame.gui.target.jlMelee.setFont(f);
-		frame.gui.target.jlRanged.setFont(f);
-		
-		frame.gui.target.jsHealth.setFont(f);
-		frame.gui.target.jsHits.setFont(f);
-		frame.gui.target.jsMelee.setFont(f);
-		frame.gui.target.jsRanged.setFont(f);
-		
-		((JSpinner.NumberEditor) frame.gui.target.jsHealth.getEditor()).getTextField().setFont(f);
-		((JSpinner.NumberEditor) frame.gui.target.jsHits.getEditor()).getTextField().setFont(f);
-		((JSpinner.NumberEditor) frame.gui.target.jsMelee.getEditor()).getTextField().setFont(f);
-		((JSpinner.NumberEditor) frame.gui.target.jsRanged.getEditor()).getTextField().setFont(f);
-	}
-	
 }

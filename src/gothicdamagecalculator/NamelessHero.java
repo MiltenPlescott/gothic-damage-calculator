@@ -45,7 +45,7 @@ public class NamelessHero {
 		jl1HSkill = new JLabel("1H skill (%):");
 		jl2HSkill = new JLabel("2H skill (%):");
 		jlBow = new JLabel("Bow skill (%):");
-		jlCrossbow = new JLabel("Crossbiw skill (%):");
+		jlCrossbow = new JLabel("Crossbow skill (%):");
 	}
 		
 	private void createJSpinners() {

@@ -132,9 +132,6 @@ public class Calculator implements ActionListener {
 		setResults(noNormals, normalDmg, noCrits, critDmg, noLightnings, lightningDmg, health, totalDmg);
 	}
 	
-	
-	
-	
 	private void g2Melee(CalculationInput calcInput) {
 		int skill = calcInput.skillBonus;
 		int singleNormalDmg;
@@ -206,8 +203,6 @@ public class Calculator implements ActionListener {
 		setResults(noNormals, normalDmg, 0, 0, noLightnings, lightningDmg, health, totalDmg);
 	}
 	
-
-	
 	private void setResults(int noNormals, int normalDmg, int noCrits, int critDmg, int noLightnings, int lightningDmg, int health, int totalDmg) {
 		frame.gui.result.jlNoNormals.setText("" + noNormals);
 		frame.gui.result.jlNormalDmg.setText("" + normalDmg);
@@ -215,10 +210,8 @@ public class Calculator implements ActionListener {
 		frame.gui.result.jlCritDmg.setText("" + critDmg);
 		frame.gui.result.jlNoLightnings.setText("" + noLightnings);
 		frame.gui.result.jlLightningDmg.setText("" + lightningDmg);
-		frame.gui.result.jlStatus.setText("" + health);
+		frame.gui.result.jlStatus.setText("" + ((health < 0) ? 0 : health));
 		frame.gui.result.jlTotalDmg.setText("" + totalDmg);
 		
 	}
-	
-	
 }
