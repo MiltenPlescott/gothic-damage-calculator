@@ -29,10 +29,7 @@ public class MyFrame extends JFrame {
 	}
 	
 	private void prepareFrame() {
-		// TODO: dynamic resizing here
 		this.setName("Gothic Damage Calculator");
-		//this.setSize(500, 500);
-		//this.setMinimumSize(new Dimension(100, 100));
 		this.setBackground(Colors.GREY);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -99,7 +96,6 @@ public class MyFrame extends JFrame {
 		
 		
 		
-		//GothicDamageCalculator gdc = new GUI();
 		MyFrame frame = new MyFrame();
 		
 		
@@ -114,7 +110,7 @@ public class MyFrame extends JFrame {
 	public static void frameSize(MyFrame frame) {
 		Rectangle rect = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
 		frame.setMinimumSize(new Dimension(600, 300));
-		frame.setBounds((rect.width-1200)/2, (rect.height-550)/2, 1200, 550);
+		frame.setBounds((rect.width-1300)/2, (rect.height-550)/2, 1300, 550);
 	}
 	
 	public static void placeholderName(MyFrame frame) {

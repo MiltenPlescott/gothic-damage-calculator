@@ -18,13 +18,6 @@ import javax.swing.JPanel;
  */
 public class Result {
 	
-	/*
-	display single normal hit and crit hit dmg ???? or the user can just use 1 number of total hits ???
-	but it would be necessary to use high crit chance  ... or I can find a place to fit in two more JTextFields ...
-
-	jbRun.addActionListener(new );
-	*/
-	
 	public JLabel jlNoNormalsLabel;
 	public JLabel jlNoNormals;
 	public JLabel jlNormalDmgLabel;
@@ -86,31 +79,28 @@ public class Result {
 		jbRun.setFocusable(false);
 	}
 	
-
-	// use west and padding ????
-	// temporarily used CENTER to get rid of the error, but need further investigation (after getting rid of TBD)
 	private void addComponentsToPanel(JPanel pResult) {
 		pResult.add(jlNoNormalsLabel,    GridBag.setGBC(0, 0, GridBagConstraints.EAST));
-		pResult.add(jlNoNormals,         GridBag.setGBC(1, 0, GridBagConstraints.CENTER));
+		pResult.add(jlNoNormals,         GridBag.setGBC(1, 0, GridBagConstraints.EAST));
 		pResult.add(jlNormalDmgLabel,    GridBag.setGBC(2, 0, GridBagConstraints.EAST));
-		pResult.add(jlNormalDmg,         GridBag.setGBC(3, 0, GridBagConstraints.CENTER));
+		pResult.add(jlNormalDmg,         GridBag.setGBC(3, 0, GridBagConstraints.EAST));
 		
 		pResult.add(jlNoCritsLabel,      GridBag.setGBC(0, 1, GridBagConstraints.EAST));
-		pResult.add(jlNoCrits,           GridBag.setGBC(1, 1, GridBagConstraints.CENTER));
+		pResult.add(jlNoCrits,           GridBag.setGBC(1, 1, GridBagConstraints.EAST));
 		pResult.add(jlCritDmgLabel,      GridBag.setGBC(2, 1, GridBagConstraints.EAST));
-		pResult.add(jlCritDmg,           GridBag.setGBC(3, 1, GridBagConstraints.CENTER));
+		pResult.add(jlCritDmg,           GridBag.setGBC(3, 1, GridBagConstraints.EAST));
 		
 		pResult.add(jlNoLightningsLabel, GridBag.setGBC(0, 2, GridBagConstraints.EAST));
-		pResult.add(jlNoLightnings,      GridBag.setGBC(1, 2, GridBagConstraints.CENTER));
+		pResult.add(jlNoLightnings,      GridBag.setGBC(1, 2, GridBagConstraints.EAST));
 		pResult.add(jlLightningDmgLabel, GridBag.setGBC(2, 2, GridBagConstraints.EAST));
-		pResult.add(jlLightningDmg,      GridBag.setGBC(3, 2, GridBagConstraints.CENTER));
+		pResult.add(jlLightningDmg,      GridBag.setGBC(3, 2, GridBagConstraints.EAST));
 		
 		pResult.add(jlStatusLabel,       GridBag.setGBC(0, 3, GridBagConstraints.EAST));
-		pResult.add(jlStatus,            GridBag.setGBC(1, 3, GridBagConstraints.CENTER));
+		pResult.add(jlStatus,            GridBag.setGBC(1, 3, GridBagConstraints.EAST));
 		pResult.add(jlTotalDmgLabel,     GridBag.setGBC(2, 3, GridBagConstraints.EAST));
-		pResult.add(jlTotalDmg,          GridBag.setGBC(3, 3, GridBagConstraints.CENTER));
+		pResult.add(jlTotalDmg,          GridBag.setGBC(3, 3, GridBagConstraints.EAST));
 		
-		pResult.add(jbReset,             GridBag.setGBC(1, 4, GridBagConstraints.WEST));
-		pResult.add(jbRun,               GridBag.setGBC(3, 4, GridBagConstraints.WEST));
+		pResult.add(jbReset,             GridBag.setGBC(1, 4, GridBagConstraints.CENTER));
+		pResult.add(jbRun,               GridBag.setGBC(3, 4, GridBagConstraints.CENTER));
 	}
 }

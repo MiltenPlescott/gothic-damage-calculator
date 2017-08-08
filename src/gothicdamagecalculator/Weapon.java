@@ -29,16 +29,6 @@ import javax.swing.border.MatteBorder;
  * @author Milten Plescott
  */
 public class Weapon {
-
-	/*	
-	GUI will create weaponPanel and it will add weaponPanel to frame(or gridPanel or what)
-	here the constructor will set layout, one method will create widgets (one meethod for each widget type)
-	and one method will add the widgets into the weaponPanel using layout (prefferably gridbag)
-
-	all other 'panel' classes will probably use gridbag and will need all them setGBC methods, so I could make a custom
-	GridBagConstarints class .... taht could possibly inherit from the JDK gbc ?????
-	*/
-
 	public JLabel jlDamage;
 	public JLabel jlWeaponType;
 	public JLabel jlBonusSkill;
@@ -88,6 +78,7 @@ public class Weapon {
 	
 	private void createOtherComponents(MyFrame frame) {
 		jcheckBeliar = new JCheckBox("Claw of Beliar", false);	// false -> not checked by default
+		jcheckBeliar.setFocusable(false);
 		
 		jcheckBeliar.addItemListener(new ItemListener() {
 			@Override
@@ -142,10 +133,10 @@ public class Weapon {
 	}
 	
 	private void addComponentsToPanel(JPanel pWeapon) {
-		pWeapon.add(jlDamage, GridBag.setGBC(0, 0, GridBagConstraints.EAST, 10));
-		pWeapon.add(jsDamage, GridBag.setGBC(1, 0, GridBagConstraints.WEST));
-		pWeapon.add(jlWeaponType, GridBag.setGBC(2, 0, GridBagConstraints.EAST, 10));
-		pWeapon.add(jcomboWeaponType,   GridBag.setGBC(3, 0, GridBagConstraints.WEST));
+		pWeapon.add(jlDamage,         GridBag.setGBC(0, 0, GridBagConstraints.EAST, 10));
+		pWeapon.add(jsDamage,         GridBag.setGBC(1, 0, GridBagConstraints.WEST));
+		pWeapon.add(jlWeaponType,     GridBag.setGBC(2, 0, GridBagConstraints.EAST, 10));
+		pWeapon.add(jcomboWeaponType, GridBag.setGBC(3, 0, GridBagConstraints.WEST));
 		
 		pWeapon.add(jcheckBeliar, GridBag.setGBC(0, 1, 2, 1, 1.0, 1.0, GridBagConstraints.CENTER, 0)); // the center anchor has not been visually tested yet
 		pWeapon.add(jlBonusSkill, GridBag.setGBC(2, 1, GridBagConstraints.EAST, 10));
