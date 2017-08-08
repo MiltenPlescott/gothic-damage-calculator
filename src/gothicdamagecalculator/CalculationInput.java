@@ -34,7 +34,6 @@ public class CalculationInput {
 	public int rangedArmor;
 	
 	public CalculationInput(MyFrame frame) {
-		// read all the data into fields (radio button included)
 		readData(frame);
 	}
 	

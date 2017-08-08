@@ -5,17 +5,13 @@
  */
 package gothicdamagecalculator;
 
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  *
  * @author Milten Plescott
  */
-
-
-// this class/file is no longer needed
-
 public class Calculator implements ActionListener {
 	
 	public MyFrame frame;
@@ -46,15 +42,6 @@ public class Calculator implements ActionListener {
 			g1Ranged(calcInput);
 		}
 	}
-		
-		//foo(weaponDamage, skill);
-	
-		/*
-		int rangedArmor = (Integer) frame.gui.target.jsRanged.getValue();
-		System.out.println("ranged");
-		
-		int singleNormalDmg;
-		*/
 	
 	private void gameG2(CalculationInput calcInput) {
 		System.out.println("running G2");
@@ -80,7 +67,6 @@ public class Calculator implements ActionListener {
 		}
 		
 		singleNormalDmg = calcInput.weaponDamage + calcInput.strength - calcInput.meleeArmor;
-		// if singleNormalDmd < 0 ??????
 		singleCritDmg = (2 * calcInput.weaponDamage) + calcInput.strength - calcInput.meleeArmor;
 		
 		g1Total(calcInput, singleNormalDmg, singleCritDmg, skill);
@@ -99,7 +85,6 @@ public class Calculator implements ActionListener {
 		}
 		
 		singleNormalDmg = calcInput.weaponDamage - calcInput.rangedArmor;
-		// if singleNormalDmd < 0 ??????
 		singleCritDmg = (2 * calcInput.weaponDamage) - calcInput.rangedArmor;
 		
 		g1Total(calcInput, singleNormalDmg, singleCritDmg, skill);
@@ -115,14 +100,14 @@ public class Calculator implements ActionListener {
 		int totalDmg;
 		int health;
 		
-		noCrits = ((skill) / 100) * calcInput.hits;
+		noCrits = calcInput.hits * skill / 100;
 		noNormals = calcInput.hits - noCrits;
 		
-		normalDmg = noNormals * singleNormalDmg;
-		critDmg = noCrits * singleCritDmg;
+		normalDmg = noNormals * ((singleNormalDmg < 0) ? 0 : singleNormalDmg);
+		critDmg = noCrits * ((singleCritDmg < 0) ? 0 : singleCritDmg);
 		
 		if (calcInput.beliar == true) {
-			noLightnings = ((calcInput.lightningChance)/ 100) * calcInput.hits;
+			noLightnings = calcInput.hits * calcInput.lightningChance / 100;
 			lightningDmg = noLightnings * calcInput.lightningDamage;
 		}
 		
@@ -158,15 +143,14 @@ public class Calculator implements ActionListener {
 		singleCritDmg = calcInput.weaponDamage + calcInput.strength - calcInput.meleeArmor;
 		singleCritDmg = (singleCritDmg < 5) ? 5 : singleCritDmg;
 		
-		noCrits = ((skill) / 100) * calcInput.hits;
-		//noCrits = calcInput.hits * skill / 100;
+		noCrits = calcInput.hits * skill / 100;
 		noNormals = calcInput.hits - noCrits;
 		
 		normalDmg = noNormals * singleNormalDmg;
 		critDmg = noCrits * singleCritDmg;
 		
 		if (calcInput.beliar == true) {
-			noLightnings = ((calcInput.lightningChance)/ 100) * calcInput.hits;
+			noLightnings = calcInput.hits * calcInput.lightningChance / 100;
 			lightningDmg = noLightnings * calcInput.lightningDamage;
 		}
 		
@@ -187,13 +171,12 @@ public class Calculator implements ActionListener {
 		
 		singleNormalDmg = calcInput.weaponDamage + calcInput.dexterity - calcInput.rangedArmor;
 		singleNormalDmg = (singleNormalDmg < 5) ? 5 : singleNormalDmg;
-		// if singleNormalDmd < 0 ??????
 		
 		noNormals = calcInput.hits;
 		normalDmg = noNormals * singleNormalDmg;
 		
 		if (calcInput.beliar == true) {
-			noLightnings = ((calcInput.lightningChance)/ 100) * calcInput.hits;
+			noLightnings = calcInput.hits * calcInput.lightningChance / 100;
 			lightningDmg = noLightnings * calcInput.lightningDamage;
 		}
 		
@@ -212,6 +195,5 @@ public class Calculator implements ActionListener {
 		frame.gui.result.jlLightningDmg.setText("" + lightningDmg);
 		frame.gui.result.jlStatus.setText("" + ((health < 0) ? 0 : health));
 		frame.gui.result.jlTotalDmg.setText("" + totalDmg);
-		
 	}
 }
