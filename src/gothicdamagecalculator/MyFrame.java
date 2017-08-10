@@ -21,6 +21,11 @@ public class MyFrame extends JFrame {
 	
 	public MyFrame frame;
 	
+	public static final int SCREEN_WIDTH = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().width;
+	public static final int SCREEN_HEIGHT = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().height;
+	public static final int DEFAULT_WIDTH = 1300;
+	public static final int DEFAULT_HEIGHT = 550;
+	
 	public GUI gui;
 	
 	public MyFrame() {
@@ -43,77 +48,18 @@ public class MyFrame extends JFrame {
 	 * @param args the command line arguments
 	 */
 	public static void main(String[] args) {
-		// look and feel testing
-		try {
-			UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-		}
-		catch(ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
-			e.printStackTrace();
-		}
-		
-
-		UIManager.LookAndFeelInfo[] lafInfo = UIManager.getInstalledLookAndFeels();
-		
-		
-		for (UIManager.LookAndFeelInfo i : lafInfo) {
-			System.out.println(i.getName());
-		}
-		
-		
-		// use menu->menu item to put in all available L&F and let the user to choose ???
-		
-		
-		
-		/*
-		UIManager.setLookAndFeel(lookAndFeel);
-
-			// If L&F = "Metal", set the theme
-
-			if (LOOKANDFEEL.equals("Metal")) {
-				if (THEME.equals("DefaultMetal"))
-					MetalLookAndFeel.setCurrentTheme(new DefaultMetalTheme());
-				else if (THEME.equals("Ocean"))
-					MetalLookAndFeel.setCurrentTheme(new OceanTheme());
-				else
-					MetalLookAndFeel.setCurrentTheme(new TestTheme());
-				UIManager.setLookAndFeel(new MetalLookAndFeel()); 
-			}	
-
-
-		
-		// Set cross-platform Java L&F (also called "Metal")
-		UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-
-		// Set System L&F
-		UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-
-		// Set cross-platform Java L&F (also called "Metal")
-		UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
-		UIManager.setLookAndFeel("javax.swing.plaf.windows.WindowsLookAndFeel");
-		UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
-		UIManager.setLookAndFeel("javax.swing.plaf.motif.MotifLookAndFeel");
-		*/
-		
-		
-		
 		MyFrame frame = new MyFrame();
-		
-		
 		frameSize(frame);
-		
-		
-		placeholderName(frame);
-		placeholderName2(frame);
-
+		addBordersToWidgets(frame);
+		changeTextStyleOnResize(frame);
 	}
 	
 	public static void frameSize(MyFrame frame) {
-		Rectangle rect = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
 		frame.setMinimumSize(new Dimension(600, 300));
-		frame.setBounds((rect.width-1300)/2, (rect.height-550)/2, 1300, 550);
+		frame.setBounds((SCREEN_WIDTH - DEFAULT_WIDTH)/2, (SCREEN_HEIGHT - DEFAULT_HEIGHT)/2, DEFAULT_WIDTH, DEFAULT_HEIGHT);
 	}
 	
-	public static void placeholderName(MyFrame frame) {
+	public static void addBordersToWidgets(MyFrame frame) {
 		CustomBorder border = new CustomBorder(frame);
 		frame.gui.rbG1.addActionListener(border);
 		frame.gui.rbG2.addActionListener(border);
@@ -121,7 +67,7 @@ public class MyFrame extends JFrame {
 		border.addBorders();
 	}
 	
-	public static void placeholderName2(MyFrame frame) {
+	public static void changeTextStyleOnResize(MyFrame frame) {
 		frame.addComponentListener(new TextStyle(frame));
 	}
 }

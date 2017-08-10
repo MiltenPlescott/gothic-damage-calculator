@@ -80,10 +80,8 @@ public class Weapon {
 		jcheckBeliar = new JCheckBox("Claw of Beliar", false);	// false -> not checked by default
 		jcheckBeliar.setFocusable(false);
 		
-		jcheckBeliar.addItemListener(new ItemListener() {
-			@Override
-			public void itemStateChanged(ItemEvent e) {
-				
+		jcheckBeliar.addItemListener(
+			(ItemEvent e) -> {
 				if (jcheckBeliar.isSelected() == true) {
 					jlLightningDmg.setEnabled(true);
 					jsLightningDmg.setEnabled(true);
@@ -101,7 +99,7 @@ public class Weapon {
 					resetLightningBorders(jsLightningChance);
 				}
 			}
-		});
+		);
 		
 		String[] weaponTypes = {"1H", "2H", "Bow", "Crossbow"};
 		jcomboWeaponType = new JComboBox(weaponTypes);

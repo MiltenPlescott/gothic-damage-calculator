@@ -5,15 +5,19 @@
  */
 package gothicdamagecalculator;
 
+import java.awt.Desktop;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
+import java.io.File;
+import java.io.IOException;
 
 import javax.swing.JDialog;
+import javax.swing.JEditorPane;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JTextArea;
-import javax.swing.JTextPane;
+import javax.swing.JScrollPane;
+import javax.swing.event.HyperlinkEvent;
 
 /**
  *
@@ -54,54 +58,93 @@ public class Menu {
 		frame.setJMenuBar(jmb);
 		
 		jmiDisclaimer.addActionListener((ActionEvent e) -> {
-			dialog(frame, e);
+			dialog(e);
 		});
 		
 		jmiFormulas.addActionListener((ActionEvent e) -> {
-			dialog(frame, e);
+			dialog(e);
 		});
 		
 		jmiHowTo.addActionListener((ActionEvent e) -> {
-			dialog(frame, e);
+			dialog(e);
 		});
 		
 		jmiAbout.addActionListener((ActionEvent e) -> {
-			dialog(frame, e);
+			dialog(e);
 		});
-		
 	}
 	
-	private void dialog(MyFrame frame, ActionEvent e) {
-		String origin = e.getActionCommand();
+	private void dialog(ActionEvent e) {
+		String title = e.getActionCommand();
+		String pathHtml = "file:///" + getPath();
+		int dialogWidth = 900;
+		int dialogHeight = 700;
+		int xPos = (MyFrame.SCREEN_WIDTH - dialogWidth) / 2;
+		int yPos = (MyFrame.SCREEN_HEIGHT - MyFrame.DEFAULT_HEIGHT) / 4;
 		
-		switch (origin) {
-			case "Disclaimer": 
+		switch (title) {
+			case "Disclaimer":
+				pathHtml += "disclaimer.html";
+				System.out.println(getPath());
 				break;
-			case "Used formulas": 
+			case "Used formulas":
+				pathHtml += "used formulas.html";
 				break;
-			case "How to use Gothic Damage Calculator": 
+			case "How to use Gothic Damage Calculator":
+				pathHtml += "how to use gothic damage calculator.html";
 				break;
-			case "About": 
+			default:
+			case "About":
+				pathHtml += "about.html";
 				break;
 		}
 		
-		JTextArea jta = new JTextArea("adsaadsaadsaadsaadsaadsaadsaadsaadsa");
-		jta.setEditable(false);
-		//jta.setHighlighter(null);
-		jta.setBackground(Colors.GREY);
-		jta.setLineWrap(true);
+		JDialog jd = new JDialog(frame, title, true);
+		jd.setSize(dialogWidth, dialogHeight);
 		
-		JTextPane jtp = new JTextPane();
-		jtp.setEditable(false);
-		jtp.setBackground(Colors.GREY);
+		try {
+			JEditorPane editor = new JEditorPane(pathHtml);
+			editor.setFont(new Font(Font.SERIF, Font.PLAIN, 20));
+			editor.putClientProperty(JEditorPane.HONOR_DISPLAY_PROPERTIES, true);
+			editor.setEditable(false);
+			editor.setHighlighter(null);
+			editor.setBackground(Colors.GREY);
+			
+			jd.add(new JScrollPane(editor));
+			
+			editor.addHyperlinkListener(
+				(HyperlinkEvent hyperE) -> {
+					if (hyperE.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
+						openLicense();
+					}
+				}
+			);
+		}
+		catch (IOException ex) {
+			ex.printStackTrace();
+		}
 		
-		
-		JDialog jd = new JDialog(frame, "Dia=adaj", true);
-		jd.add(jta);
-		jd.setSize(300, 300);
-		jd.setVisible(true);
-		
-		// http://forum.worldofplayers.de/forum/threads/127320-Damage-System?p=2198181#post2198181
-		
+		jd.setLocationRelativeTo(frame);
+		jd.setLocation(xPos, yPos);
+		jd.setVisible(true);		
+	}
+	
+	private String getPath() {
+		String dir = System.getProperty("user.dir");
+		return dir + File.separator;
+	}
+	
+	private void openLicense() {
+		if (Desktop.isDesktopSupported() == true) {
+			Desktop desktop = Desktop.getDesktop();
+			if (desktop.isSupported(Desktop.Action.OPEN) == true) {
+				try {
+					desktop.open(new File(getPath() + "license.txt"));
+				}
+				catch (IOException ioex) {
+					ioex.printStackTrace();
+				}
+			}
+		}
 	}
 }

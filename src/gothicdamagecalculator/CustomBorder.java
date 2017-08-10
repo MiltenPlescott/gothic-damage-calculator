@@ -8,6 +8,7 @@ package gothicdamagecalculator;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JComponent;
 import javax.swing.JSpinner;
 import javax.swing.UIManager;
@@ -31,8 +32,6 @@ public class CustomBorder implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		System.out.println("Borders triggered");
-		
 		resetBorders();
 		addBorders();
 	}

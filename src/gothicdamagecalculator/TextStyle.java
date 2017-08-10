@@ -8,6 +8,7 @@ package gothicdamagecalculator;
 import java.awt.Font;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+
 import javax.swing.JSpinner;
 import javax.swing.JSpinner.NumberEditor;
 
@@ -21,17 +22,15 @@ public class TextStyle extends ComponentAdapter {
 	
 	public TextStyle(MyFrame frame) {
 		this.frame = frame;
-		placeHolder();
+		updateFonts();
 	}
 	
 	@Override
 	public void componentResized(ComponentEvent e) {
-		placeHolder();
+		updateFonts();
 	}
 	
-	// reset button functionality into new class ??????
-	
-	private void placeHolder() {
+	private void updateFonts() {
 		Font font = newFont();
 		
 		// Nameless Hero JLabels
@@ -114,6 +113,5 @@ public class TextStyle extends ComponentAdapter {
 	
 	private void setFontSpinner(JSpinner js, Font font) {
 		((NumberEditor) js.getEditor()).getTextField().setFont(font);
-		
 	}
 }

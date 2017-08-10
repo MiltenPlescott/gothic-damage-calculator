@@ -33,8 +33,6 @@ public class Calculator implements ActionListener {
 	}
 	
 	public void gameG1(CalculationInput calcInput) {
-		System.out.println("running G1");	
-		
 		if (calcInput.weaponType.equals("1H") || calcInput.weaponType.equals("2H")) {
 			g1Melee(calcInput);
 		}
@@ -44,8 +42,6 @@ public class Calculator implements ActionListener {
 	}
 	
 	private void gameG2(CalculationInput calcInput) {
-		System.out.println("running G2");
-		
 		if (calcInput.weaponType.equals("1H") || calcInput.weaponType.equals("2H")) {
 			g2Melee(calcInput);
 		}

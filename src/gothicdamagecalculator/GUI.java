@@ -55,7 +55,7 @@ public class GUI extends ComponentAdapter {
 	public GUI(MyFrame frame) {
 		this.frame = frame;
 
-		frame.setLayout(new BorderLayout(0, 20));	// hgap, vgap
+		frame.setLayout(new BorderLayout(0, 0));	// hgap, vgap
 		
 		rbG1 = new JRadioButton("Gothic 1", false);	// false - initially unselected
 		rbG2 = new JRadioButton("Gothic 2", true);	// true - initially selected
@@ -121,42 +121,8 @@ public class GUI extends ComponentAdapter {
 		tBorder.setTitleFont(new Font(Font.SANS_SERIF, Font.PLAIN, 20));
 		//jp.setBorder(tBorder);
 		
-		jp.setBorder(new CompoundBorder(tBorder, new EmptyBorder(20, 20, 20, 20)));	// change dynamically
+		jp.setBorder(new CompoundBorder(tBorder, new EmptyBorder(5, 5, 5, 10)));	// top, left, bottom, right
 	}
-	
-	/*
-	in the listener that will handle getting the value from spinner:
-	try----js1HSkill.commitEdit();
-	error---- red color all over the place
-	*/
-	
-	/*
-	ALIGNMENT of number insdie JSpinner -- probably not gonna use it since the arrows of spinner are on the right
-	and far away from the number (it would not look any better so there is no point in doing extra work)
-	
-	// MIGHT BE USEFUL IN THE FUTURE:
-	JComponent jc = jsMelee.getEditor();
-	JSpinner.DefaultEditor foo = (JSpinner.DefaultEditor)jc;
-	foo.getTextField().setHorizontalAlignment(JTextField.LEFT);
-	*/
-	
-
-	// reset (to default values) is only a filler so the run button is not all alone down there
-
-	// example:
-	// number of normal hits 125
-	// (it is all gonna be one JTextField, but the number could have different color/font size)
-
-
-
-
-
-	// display single normal hit and crit hit dmg ???? or the user can just run app using calculation only for 1 hit ???
-	// but it would be necessary to use high crit chance  ... or I can find a place to fit in two more JTextFields ...
-
-
-
-	//jbRun.addActionListener(new );
 
 	private void colorCoding() {
 		frame.setBackground(Colors.GREY);
