@@ -18,7 +18,6 @@ import javax.swing.SpinnerNumberModel;
  * @author Milten Plescott
  */
 public class Target {
-	
 	public JLabel jlHealth;
 	public JLabel jlHits;
 	public JLabel jlMelee;

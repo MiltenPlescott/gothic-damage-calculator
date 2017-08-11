@@ -7,6 +7,7 @@ package gothicdamagecalculator;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
@@ -17,7 +18,6 @@ import javax.swing.SpinnerNumberModel;
  * @author Milten Plescott
  */
 public class NamelessHero {
-	
 	public JLabel jlStr;
 	public JLabel jlDex;
 	public JLabel jl1HSkill;

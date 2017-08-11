@@ -13,7 +13,6 @@ import java.awt.event.ActionListener;
  * @author Milten Plescott
  */
 public class Calculator implements ActionListener {
-	
 	public MyFrame frame;
 	
 	public Calculator(MyFrame frame) {

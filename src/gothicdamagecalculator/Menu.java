@@ -10,6 +10,8 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 import javax.swing.JDialog;
 import javax.swing.JEditorPane;
@@ -115,13 +117,23 @@ public class Menu {
 			editor.addHyperlinkListener(
 				(HyperlinkEvent hyperE) -> {
 					if (hyperE.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
-						openLicense();
+						if (hyperE.getDescription().equals("license.txt")) {
+							openLicense();
+						}
+						else {
+							try {
+								openBrowser(new URI(hyperE.getDescription()));
+							}
+							catch (URISyntaxException uriEx) {
+								uriEx.printStackTrace();
+							}
+						}
 					}
 				}
 			);
 		}
-		catch (IOException ex) {
-			ex.printStackTrace();
+		catch (IOException ioEx) {
+			ioEx.printStackTrace();
 		}
 		
 		jd.setLocationRelativeTo(frame);
@@ -141,10 +153,25 @@ public class Menu {
 				try {
 					desktop.open(new File(getPath() + "license.txt"));
 				}
-				catch (IOException ioex) {
-					ioex.printStackTrace();
+				catch (IOException ioEx) {
+					ioEx.printStackTrace();
 				}
 			}
 		}
+	}
+	
+	private void openBrowser(URI uri) {
+		if (Desktop.isDesktopSupported() == true) {
+			Desktop desktop = Desktop.getDesktop();
+			if (desktop.isSupported(Desktop.Action.BROWSE) == true) {
+				try {
+					desktop.browse(uri);
+				}
+				catch (IOException ioEx) {
+					ioEx.printStackTrace();
+				}
+			}
+		}
+		
 	}
 }

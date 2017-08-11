@@ -7,20 +7,14 @@ package gothicdamagecalculator;
 
 import java.awt.Dimension;
 import java.awt.GraphicsEnvironment;
-import java.awt.Rectangle;
 
 import javax.swing.JFrame;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
  * @author Milten Plescott
  */
 public class MyFrame extends JFrame {
-	
-	public MyFrame frame;
-	
 	public static final int SCREEN_WIDTH = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().width;
 	public static final int SCREEN_HEIGHT = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().height;
 	public static final int DEFAULT_WIDTH = 1300;
@@ -37,10 +31,7 @@ public class MyFrame extends JFrame {
 		this.setName("Gothic Damage Calculator");
 		this.setBackground(Colors.GREY);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
 		this.gui = new GUI(this);
-		
-		this.pack();
 		this.setVisible(true);
 	}
 	
@@ -55,7 +46,7 @@ public class MyFrame extends JFrame {
 	}
 	
 	public static void frameSize(MyFrame frame) {
-		frame.setMinimumSize(new Dimension(600, 300));
+		frame.setMinimumSize(new Dimension(810, 350));
 		frame.setBounds((SCREEN_WIDTH - DEFAULT_WIDTH)/2, (SCREEN_HEIGHT - DEFAULT_HEIGHT)/2, DEFAULT_WIDTH, DEFAULT_HEIGHT);
 	}
 	

@@ -9,7 +9,6 @@ import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -77,7 +76,7 @@ public class Weapon {
 	}
 	
 	private void createOtherComponents(MyFrame frame) {
-		jcheckBeliar = new JCheckBox("Claw of Beliar", false);	// false -> not checked by default
+		jcheckBeliar = new JCheckBox("Claw of Beliar", false);	// false -> initially unselected
 		jcheckBeliar.setFocusable(false);
 		
 		jcheckBeliar.addItemListener(
@@ -136,7 +135,7 @@ public class Weapon {
 		pWeapon.add(jlWeaponType,     GridBag.setGBC(2, 0, GridBagConstraints.EAST, 10));
 		pWeapon.add(jcomboWeaponType, GridBag.setGBC(3, 0, GridBagConstraints.WEST));
 		
-		pWeapon.add(jcheckBeliar, GridBag.setGBC(0, 1, 2, 1, 1.0, 1.0, GridBagConstraints.CENTER, 0)); // the center anchor has not been visually tested yet
+		pWeapon.add(jcheckBeliar, GridBag.setGBC(0, 1, 2, 1, 1.0, 1.0, GridBagConstraints.CENTER, 0));
 		pWeapon.add(jlBonusSkill, GridBag.setGBC(2, 1, GridBagConstraints.EAST, 10));
 		pWeapon.add(jsBonusSkill, GridBag.setGBC(3, 1, GridBagConstraints.WEST));
 		

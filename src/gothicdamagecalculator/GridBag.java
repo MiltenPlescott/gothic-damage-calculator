@@ -13,14 +13,11 @@ import java.awt.Insets;
  * @author Milten Plescott
  */
 public class GridBag {
-	
 	/*
 	BASIC LAYOUT CONSTRAINTS SETTINGS:
-
 	JSpinner (col, row, noCol, noRow, 1.0, 1.0, EAST, NONE, insets(0,0,0,0), 10, 0)
 	JLabel   (col, row, noCol, noRow, 1.0, 1.0, WEST, NONE, insets(0,0,0,0),  0, 0)
 	*/
-	
 	
 	public static GridBagConstraints setGBC(int gridx, int gridy, int gridwidth, int gridheight, double weightx, double weighty, int anchor, int ipadx) {
 		return new GridBagConstraints(

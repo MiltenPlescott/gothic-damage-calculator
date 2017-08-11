@@ -13,7 +13,6 @@ import javax.swing.JSpinner;
  * @author Milten Plescott
  */
 public class CalculationInput {
-	
 	public boolean gameG1;
 	
 	public int strength;
@@ -25,7 +24,6 @@ public class CalculationInput {
 	
 	public String weaponType;
 	public boolean beliar;
-	
 	public int weaponDamage;
 	public int skillBonus;
 	public int lightningDamage;
@@ -56,7 +54,7 @@ public class CalculationInput {
 		skill2H = (Integer) frame.gui.namelessHero.js2HSkill.getValue();
 		skillBow = (Integer) frame.gui.namelessHero.jsBow.getValue();
 		skillCrossbow = (Integer) frame.gui.namelessHero.jsCrossbow.getValue();
-
+		
 		weaponType = frame.gui.weapon.jcomboWeaponType.getSelectedItem().toString();
 		beliar = frame.gui.weapon.jcheckBeliar.isSelected();
 

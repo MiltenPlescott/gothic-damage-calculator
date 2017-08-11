@@ -17,7 +17,6 @@ import javax.swing.JPanel;
  * @author Milten Plescott
  */
 public class Result {
-	
 	public JLabel jlNoNormalsLabel;
 	public JLabel jlNoNormals;
 	public JLabel jlNormalDmgLabel;
@@ -72,11 +71,11 @@ public class Result {
 	
 	private void createJButtons(MyFrame frame) {
 		jbReset = new JButton("Reset");
-		jbRun = new JButton("Run");
-		jbReset.addActionListener(new ResetButton(frame));
-		jbRun.addActionListener(new Calculator(frame));
 		jbReset.setFocusable(false);
+		jbReset.addActionListener(new ResetButton(frame));
+		jbRun = new JButton("Run");
 		jbRun.setFocusable(false);
+		jbRun.addActionListener(new Calculator(frame));
 	}
 	
 	private void addComponentsToPanel(JPanel pResult) {

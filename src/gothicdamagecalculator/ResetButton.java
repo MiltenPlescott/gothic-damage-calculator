@@ -13,7 +13,6 @@ import java.awt.event.ActionEvent;
  * @author Milten Plescott
  */
 public class ResetButton implements ActionListener {
-	
 	public MyFrame frame;
 	
 	public ResetButton(MyFrame frame) {
@@ -33,16 +32,16 @@ public class ResetButton implements ActionListener {
 		frame.gui.namelessHero.jsBow.setValue(10);
 		frame.gui.namelessHero.jsCrossbow.setValue(10);
 		
-		frame.gui.target.jsHealth.setValue(1000);
-		frame.gui.target.jsHits.setValue(20);
-		frame.gui.target.jsMelee.setValue(10);
-		frame.gui.target.jsRanged.setValue(10);
-		
 		frame.gui.weapon.jsDamage.setValue(10);
 		frame.gui.weapon.jcomboWeaponType.setSelectedItem("1H");
 		frame.gui.weapon.jcheckBeliar.setSelected(false);
 		frame.gui.weapon.jsBonusSkill.setValue(0);
 		frame.gui.weapon.jsLightningDmg.setValue(100);
 		frame.gui.weapon.jsLightningChance.setValue(12);
+		
+		frame.gui.target.jsHealth.setValue(1000);
+		frame.gui.target.jsHits.setValue(20);
+		frame.gui.target.jsMelee.setValue(10);
+		frame.gui.target.jsRanged.setValue(10);
 	}
 }
