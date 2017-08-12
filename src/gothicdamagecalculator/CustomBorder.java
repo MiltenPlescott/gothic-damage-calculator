@@ -65,11 +65,12 @@ public class CustomBorder implements ActionListener {
 		createBorder(frame.gui.namelessHero.jsStrength);
 		createBorder(frame.gui.target.jsMelee);
 		createBorder(frame.gui.weapon.jsBonusSkill);
+		
 		if (weaponType.equals("1H")) {
-		createBorder(frame.gui.namelessHero.js1HSkill);
+			createBorder(frame.gui.namelessHero.js1HSkill);
 		}
 		else {
-		createBorder(frame.gui.namelessHero.js2HSkill);
+			createBorder(frame.gui.namelessHero.js2HSkill);
 		}
 	}
 	
@@ -90,7 +91,7 @@ public class CustomBorder implements ActionListener {
 		createBorder(frame.gui.target.jsRanged);
 	}
 	
-	public void createBorder(JSpinner spinner) {
+	private void createBorder(JSpinner spinner) {
 		LineBorder lb = new LineBorder(Colors.BLUISH, 3);
 																			// MatteBorder(top, left, bottom, right, color)
 		MatteBorder mbTR = new MatteBorder(3, 0, 0, 3, Colors.BLUISH);		// top-right border for TOP BUTTON

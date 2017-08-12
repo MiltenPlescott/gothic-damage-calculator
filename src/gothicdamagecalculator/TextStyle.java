@@ -104,10 +104,8 @@ public class TextStyle extends ComponentAdapter {
 	private Font newFont() {
 		int w = frame.getSize().width;
 		int h = frame.getSize().height;
-		
 		int fontSize = (w + h) / 90;
 		
-		// tested: for all JLabels I'll go with SANS_SERIF and PLAIN
 		return new Font(Font.SANS_SERIF, Font.PLAIN, fontSize);
 	}
 	

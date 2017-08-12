@@ -50,7 +50,6 @@ public class Menu {
 		
 		Font font = new Font(Font.SANS_SERIF, Font.BOLD, 15);
 		
-		jmb.setFont(font);
 		jm.setFont(font);
 		jmiDisclaimer.setFont(font);
 		jmiFormulas.setFont(font);
@@ -87,13 +86,12 @@ public class Menu {
 		switch (title) {
 			case "Disclaimer":
 				pathHtml += "disclaimer.html";
-				System.out.println(getPath());
 				break;
 			case "Used formulas":
-				pathHtml += "used formulas.html";
+				pathHtml += "formulas.html";
 				break;
 			case "How to use Gothic Damage Calculator":
-				pathHtml += "how to use gothic damage calculator.html";
+				pathHtml += "howto.html";
 				break;
 			default:
 			case "About":
@@ -106,10 +104,9 @@ public class Menu {
 		
 		try {
 			JEditorPane editor = new JEditorPane(pathHtml);
-			editor.setFont(new Font(Font.SERIF, Font.PLAIN, 20));
 			editor.putClientProperty(JEditorPane.HONOR_DISPLAY_PROPERTIES, true);
+			editor.setFont(new Font(Font.SERIF, Font.PLAIN, 20));
 			editor.setEditable(false);
-			editor.setHighlighter(null);
 			editor.setBackground(Colors.GREY);
 			
 			jd.add(new JScrollPane(editor));
@@ -141,11 +138,6 @@ public class Menu {
 		jd.setVisible(true);		
 	}
 	
-	private String getPath() {
-		String dir = System.getProperty("user.dir");
-		return dir + File.separator;
-	}
-	
 	private void openLicense() {
 		if (Desktop.isDesktopSupported() == true) {
 			Desktop desktop = Desktop.getDesktop();
@@ -172,6 +164,9 @@ public class Menu {
 				}
 			}
 		}
-		
+	}
+	
+	private String getPath() {
+		return System.getProperty("user.dir") + File.separator;
 	}
 }
