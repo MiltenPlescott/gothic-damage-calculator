@@ -80,7 +80,7 @@ public class Menu {
 	
 	private void dialog(ActionEvent e) {
 		String title = e.getActionCommand();
-		String pathHtml = "file:///" + getPath();
+		String pathHtml = "file:///" + getPath() + "menu" + File.separator;
 		int dialogWidth = 900;
 		int dialogHeight = 700;
 		int xPos = (MyFrame.SCREEN_WIDTH - dialogWidth) / 2;
