@@ -1,8 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * GothicDamageCalculator
+ * 
+ * Copyright (c) 2017, Milten Plescott. All rights reserved.
+ * 
+ * SPDX-License-Identifier:    BSD-3-Clause
  */
+
 package gothicdamagecalculator;
 
 import java.awt.GridBagConstraints;
@@ -61,5 +64,3 @@ public class Target {
 		pTarget.add(jsRanged, GridBag.setGBC(3, 1, GridBagConstraints.WEST));
 	}
 }
-
-

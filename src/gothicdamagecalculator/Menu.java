@@ -1,8 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * GothicDamageCalculator
+ * 
+ * Copyright (c) 2017, Milten Plescott. All rights reserved.
+ * 
+ * SPDX-License-Identifier:    BSD-3-Clause
  */
+
 package gothicdamagecalculator;
 
 import java.awt.Desktop;
@@ -114,7 +117,7 @@ public class Menu {
 			editor.addHyperlinkListener(
 				(HyperlinkEvent hyperE) -> {
 					if (hyperE.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
-						if (hyperE.getDescription().equals("license.txt")) {
+						if (hyperE.getDescription().equals("LICENSE.txt")) {
 							openLicense();
 						}
 						else {
@@ -143,7 +146,7 @@ public class Menu {
 			Desktop desktop = Desktop.getDesktop();
 			if (desktop.isSupported(Desktop.Action.OPEN) == true) {
 				try {
-					desktop.open(new File(getPath() + "license.txt"));
+					desktop.open(new File(getPath() + "LICENSE.txt"));
 				}
 				catch (IOException ioEx) {
 					ioEx.printStackTrace();

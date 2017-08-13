@@ -1,8 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * GothicDamageCalculator
+ * 
+ * Copyright (c) 2017, Milten Plescott. All rights reserved.
+ * 
+ * SPDX-License-Identifier:    BSD-3-Clause
  */
+
 package gothicdamagecalculator;
 
 import java.awt.Color;
@@ -22,7 +25,6 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
 
-
 /**
  *
  * @author Milten Plescott
@@ -40,7 +42,7 @@ public class Weapon {
 	public JSpinner jsLightningChance;
 	
 	public JCheckBox jcheckBeliar;
-	public JComboBox jcomboWeaponType;
+	public JComboBox<String> jcomboWeaponType;
 	
 	public Color defaultSpinnerColor;
 	
@@ -48,16 +50,16 @@ public class Weapon {
 		pWeapon.setLayout(new GridBagLayout());
 		createJLabels();
 		createJSpinners();
-		createOtherComponents(frame);
+		createOtherComponents();
 		addComponentsToPanel(pWeapon);
 	}
 	
 	private void createJLabels() {
 		jlDamage = new JLabel("Damage:");
 		jlWeaponType = new JLabel("Weapon type:");
-		jlBonusSkill = new JLabel("Bonus skill (%):");			// enable = false when combobox == bow || xbow
-		jlLightningDmg = new JLabel("Lightning damage:");			// enable = false when jcheckBeliar == false
-		jlLightningChance = new JLabel("Lightning chance (%):");	// enable = false when jcheckBeliar == false
+		jlBonusSkill = new JLabel("Bonus skill (%):");
+		jlLightningDmg = new JLabel("Lightning damage:");
+		jlLightningChance = new JLabel("Lightning chance (%):");
 		
 		jlLightningDmg.setEnabled(false);
 		jlLightningChance.setEnabled(false);
@@ -65,9 +67,9 @@ public class Weapon {
 	
 	private void createJSpinners() {
 		jsDamage = new JSpinner(new SpinnerNumberModel(10, 0, 5000, 1));
-		jsBonusSkill = new JSpinner(new SpinnerNumberModel(0, 0, 100, 1));			// enable = false when combobox == bow || xbow
-		jsLightningDmg = new JSpinner(new SpinnerNumberModel(100, 0, 5000, 1));	// enable = false when jcheckBeliar == false
-		jsLightningChance = new JSpinner(new SpinnerNumberModel(12, 0, 100, 1));	// enable = false when jcheckBeliar == false
+		jsBonusSkill = new JSpinner(new SpinnerNumberModel(0, 0, 100, 1));
+		jsLightningDmg = new JSpinner(new SpinnerNumberModel(100, 0, 5000, 1));
+		jsLightningChance = new JSpinner(new SpinnerNumberModel(12, 0, 100, 1));
 		
 		jsLightningDmg.setEnabled(false);
 		jsLightningChance.setEnabled(false);
@@ -75,7 +77,7 @@ public class Weapon {
 		defaultSpinnerColor = ((JSpinner.NumberEditor) jsDamage.getEditor()).getTextField().getBackground();
 	}
 	
-	private void createOtherComponents(MyFrame frame) {
+	private void createOtherComponents() {
 		jcheckBeliar = new JCheckBox("Claw of Beliar", false);	// false -> initially unselected
 		jcheckBeliar.setFocusable(false);
 		
@@ -101,7 +103,7 @@ public class Weapon {
 		);
 		
 		String[] weaponTypes = {"1H", "2H", "Bow", "Crossbow"};
-		jcomboWeaponType = new JComboBox(weaponTypes);
+		jcomboWeaponType = new JComboBox<>(weaponTypes);
 		jcomboWeaponType.setFocusable(false);
 	}
 	

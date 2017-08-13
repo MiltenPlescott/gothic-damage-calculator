@@ -1,8 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * GothicDamageCalculator
+ * 
+ * Copyright (c) 2017, Milten Plescott. All rights reserved.
+ * 
+ * SPDX-License-Identifier:    BSD-3-Clause
  */
+
 package gothicdamagecalculator;
 
 import java.awt.BorderLayout;
@@ -11,15 +14,13 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ComponentAdapter;
 
+import javax.swing.ButtonGroup;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
-import javax.swing.ButtonGroup;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-
-
 
 /**
  *

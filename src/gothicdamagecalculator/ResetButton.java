@@ -1,12 +1,15 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * GothicDamageCalculator
+ * 
+ * Copyright (c) 2017, Milten Plescott. All rights reserved.
+ * 
+ * SPDX-License-Identifier:    BSD-3-Clause
  */
+
 package gothicdamagecalculator;
 
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  *
@@ -43,5 +46,14 @@ public class ResetButton implements ActionListener {
 		frame.gui.target.jsHits.setValue(20);
 		frame.gui.target.jsMelee.setValue(10);
 		frame.gui.target.jsRanged.setValue(10);
+		
+		frame.gui.result.jlNoNormals.setText("");
+		frame.gui.result.jlNormalDmg.setText("");
+		frame.gui.result.jlNoCrits.setText("");
+		frame.gui.result.jlCritDmg.setText("");
+		frame.gui.result.jlNoLightnings.setText("");
+		frame.gui.result.jlLightningDmg.setText("");
+		frame.gui.result.jlStatus.setText("");
+		frame.gui.result.jlTotalDmg.setText("");
 	}
 }
