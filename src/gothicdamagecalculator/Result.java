@@ -66,7 +66,7 @@ public class Result {
 		jlLightningDmgLabel = new JLabel("Lightning damage:");
 		jlLightningDmg = new JLabel("");
 		
-		jlStatusLabel = new JLabel("Health left:");
+		jlStatusLabel = new JLabel("Hitpoints left:");
 		jlStatus = new JLabel("");
 		jlTotalDmgLabel = new JLabel("Total damage:");
 		jlTotalDmg = new JLabel("");

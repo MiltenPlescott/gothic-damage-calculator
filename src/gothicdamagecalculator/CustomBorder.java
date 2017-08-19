@@ -59,7 +59,7 @@ public class CustomBorder implements ActionListener {
 	}
 	
 	private void permanentBorder() {
-		createBorder(frame.gui.target.jsHealth);
+		createBorder(frame.gui.target.jsHitpoints);
 		createBorder(frame.gui.target.jsHits);
 		createBorder(frame.gui.weapon.jsDamage);
 	}

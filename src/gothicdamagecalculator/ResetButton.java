@@ -42,7 +42,7 @@ public class ResetButton implements ActionListener {
 		frame.gui.weapon.jsLightningDmg.setValue(100);
 		frame.gui.weapon.jsLightningChance.setValue(12);
 		
-		frame.gui.target.jsHealth.setValue(1000);
+		frame.gui.target.jsHitpoints.setValue(1000);
 		frame.gui.target.jsHits.setValue(20);
 		frame.gui.target.jsMelee.setValue(10);
 		frame.gui.target.jsRanged.setValue(10);

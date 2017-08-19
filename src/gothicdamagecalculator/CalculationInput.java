@@ -33,7 +33,7 @@ public class CalculationInput {
 	public int lightningDamage;
 	public int lightningChance;
 	
-	public int health;
+	public int hitpoints;
 	public int hits;
 	public int meleeArmor;
 	public int rangedArmor;
@@ -72,12 +72,12 @@ public class CalculationInput {
 		lightningDamage = (Integer) frame.gui.weapon.jsLightningDmg.getValue();
 		lightningChance = (Integer) frame.gui.weapon.jsLightningChance.getValue();
 
-		commitSpinner(frame.gui.target.jsHealth);
+		commitSpinner(frame.gui.target.jsHitpoints);
 		commitSpinner(frame.gui.target.jsHits);
 		commitSpinner(frame.gui.target.jsMelee);
 		commitSpinner(frame.gui.target.jsRanged);
 
-		health = (Integer) frame.gui.target.jsHealth.getValue();
+		hitpoints = (Integer) frame.gui.target.jsHitpoints.getValue();
 		hits = (Integer) frame.gui.target.jsHits.getValue();
 		meleeArmor = (Integer) frame.gui.target.jsMelee.getValue();
 		rangedArmor = (Integer) frame.gui.target.jsRanged.getValue();

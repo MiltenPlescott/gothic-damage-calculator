@@ -53,13 +53,13 @@ public class TextStyle extends ComponentAdapter {
 		setFontSpinner(frame.gui.namelessHero.jsCrossbow, font);
 		
 		// Target JLabels
-		frame.gui.target.jlHealth.setFont(font);
+		frame.gui.target.jlHitpoints.setFont(font);
 		frame.gui.target.jlHits.setFont(font);
 		frame.gui.target.jlMelee.setFont(font);
 		frame.gui.target.jlRanged.setFont(font);
 		
 		// Target JSpinners
-		setFontSpinner(frame.gui.target.jsHealth, font);
+		setFontSpinner(frame.gui.target.jsHitpoints, font);
 		setFontSpinner(frame.gui.target.jsHits, font);
 		setFontSpinner(frame.gui.target.jsMelee, font);
 		setFontSpinner(frame.gui.target.jsRanged, font);

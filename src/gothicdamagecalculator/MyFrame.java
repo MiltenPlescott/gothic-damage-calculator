@@ -26,7 +26,7 @@ public class MyFrame extends JFrame {
 	public GUI gui;
 	
 	public MyFrame() {
-		super();
+		super("Gothic Damage Calculator");
 		prepareFrame();
 	}
 	

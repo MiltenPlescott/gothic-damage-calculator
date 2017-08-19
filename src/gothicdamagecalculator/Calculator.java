@@ -96,7 +96,7 @@ public class Calculator implements ActionListener {
 		int noLightnings = 0;
 		int lightningDmg = 0;
 		int totalDmg;
-		int health;
+		int hitpoints;
 		
 		noCrits = calcInput.hits * skill / 100;
 		noNormals = calcInput.hits - noCrits;
@@ -110,9 +110,9 @@ public class Calculator implements ActionListener {
 		}
 		
 		totalDmg = normalDmg + critDmg + lightningDmg;
-		health = calcInput.health - totalDmg;
+		hitpoints = calcInput.hitpoints - totalDmg;
 		
-		setResults(noNormals, normalDmg, noCrits, critDmg, noLightnings, lightningDmg, health, totalDmg);
+		setResults(noNormals, normalDmg, noCrits, critDmg, noLightnings, lightningDmg, hitpoints, totalDmg);
 	}
 	
 	private void g2Melee(CalculationInput calcInput) {
@@ -126,7 +126,7 @@ public class Calculator implements ActionListener {
 		int noLightnings = 0;
 		int lightningDmg = 0;
 		int totalDmg;
-		int health;
+		int hitpoints;
 		
 		if (calcInput.weaponType.equals("1H")) {
 			skill += calcInput.skill1H;
@@ -153,9 +153,9 @@ public class Calculator implements ActionListener {
 		}
 		
 		totalDmg = normalDmg + critDmg + lightningDmg;
-		health = calcInput.health - totalDmg;
+		hitpoints = calcInput.hitpoints - totalDmg;
 		
-		setResults(noNormals, normalDmg, noCrits, critDmg, noLightnings, lightningDmg, health, totalDmg);
+		setResults(noNormals, normalDmg, noCrits, critDmg, noLightnings, lightningDmg, hitpoints, totalDmg);
 	}
 		
 	private void g2Ranged(CalculationInput calcInput) {
@@ -165,7 +165,7 @@ public class Calculator implements ActionListener {
 		int noLightnings = 0;
 		int lightningDmg = 0;
 		int totalDmg;
-		int health;
+		int hitpoints;
 		
 		singleNormalDmg = calcInput.weaponDamage + calcInput.dexterity - calcInput.rangedArmor;
 		singleNormalDmg = (singleNormalDmg < 5) ? 5 : singleNormalDmg;
@@ -179,19 +179,19 @@ public class Calculator implements ActionListener {
 		}
 		
 		totalDmg = normalDmg + lightningDmg;
-		health = calcInput.health - totalDmg;
+		hitpoints = calcInput.hitpoints - totalDmg;
 		
-		setResults(noNormals, normalDmg, 0, 0, noLightnings, lightningDmg, health, totalDmg);
+		setResults(noNormals, normalDmg, 0, 0, noLightnings, lightningDmg, hitpoints, totalDmg);
 	}
 	
-	private void setResults(int noNormals, int normalDmg, int noCrits, int critDmg, int noLightnings, int lightningDmg, int health, int totalDmg) {
+	private void setResults(int noNormals, int normalDmg, int noCrits, int critDmg, int noLightnings, int lightningDmg, int hitpoints, int totalDmg) {
 		frame.gui.result.jlNoNormals.setText("" + noNormals);
 		frame.gui.result.jlNormalDmg.setText("" + normalDmg);
 		frame.gui.result.jlNoCrits.setText("" + noCrits);
 		frame.gui.result.jlCritDmg.setText("" + critDmg);
 		frame.gui.result.jlNoLightnings.setText("" + noLightnings);
 		frame.gui.result.jlLightningDmg.setText("" + lightningDmg);
-		frame.gui.result.jlStatus.setText("" + ((health < 0) ? 0 : health));
+		frame.gui.result.jlStatus.setText("" + ((hitpoints < 0) ? 0 : hitpoints));
 		frame.gui.result.jlTotalDmg.setText("" + totalDmg);
 	}
 }

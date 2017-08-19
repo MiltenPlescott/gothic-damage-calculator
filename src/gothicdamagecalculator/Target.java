@@ -21,12 +21,12 @@ import javax.swing.SpinnerNumberModel;
  * @author Milten Plescott
  */
 public class Target {
-	public JLabel jlHealth;
+	public JLabel jlHitpoints;
 	public JLabel jlHits;
 	public JLabel jlMelee;
 	public JLabel jlRanged;
 	
-	public JSpinner jsHealth;
+	public JSpinner jsHitpoints;
 	public JSpinner jsHits;
 	public JSpinner jsMelee;
 	public JSpinner jsRanged;
@@ -39,22 +39,22 @@ public class Target {
 	}
 	
 	private void createJLabels() {
-		jlHealth = new JLabel("Health:");
+		jlHitpoints = new JLabel("Hitpoints:");
 		jlHits = new JLabel("Number of hits:");
 		jlMelee = new JLabel("Melee armor:");
 		jlRanged = new JLabel("Ranged armor:");
 	}
 	
 	private void createJSpinners() {
-		jsHealth = new JSpinner(new SpinnerNumberModel(1000, 1, 1000000, 1));
+		jsHitpoints = new JSpinner(new SpinnerNumberModel(1000, 1, 1000000, 1));
 		jsHits = new JSpinner(new SpinnerNumberModel(20, 1, 5000, 1));
 		jsMelee = new JSpinner(new SpinnerNumberModel(10, 0, 5000, 1));
 		jsRanged = new JSpinner(new SpinnerNumberModel(10, 0, 5000, 1));
 	}
 
 	private void addComponentsToPanel(JPanel pTarget) {
-		pTarget.add(jlHealth, GridBag.setGBC(0, 0, GridBagConstraints.EAST, 10));
-		pTarget.add(jsHealth, GridBag.setGBC(1, 0, GridBagConstraints.WEST));
+		pTarget.add(jlHitpoints, GridBag.setGBC(0, 0, GridBagConstraints.EAST, 10));
+		pTarget.add(jsHitpoints, GridBag.setGBC(1, 0, GridBagConstraints.WEST));
 		pTarget.add(jlMelee,  GridBag.setGBC(2, 0, GridBagConstraints.EAST, 10));
 		pTarget.add(jsMelee,  GridBag.setGBC(3, 0, GridBagConstraints.WEST));
 		
